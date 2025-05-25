@@ -1,0 +1,157 @@
+{
+  "navigation": {
+    "home": "Home",
+    "events": "Events",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "home": {    "hero": {
+      "title": "Developer Student Club Darmstadt",
+      "subtitle": "Bridging the gap between students and industry through innovation, collaboration, and tech excellence",
+      "description": "Join TU Darmstadt's premier developer community where students connect with leading companies, participate in exciting hackathons, and build the future of technology together.",
+      "tagline": "Building innovative solutions together",
+      "cta": {
+        "events": "Explore Events",
+        "about": "Learn More"
+      }
+    },
+    "about": {
+      "title": "What is DSC Darmstadt?",
+      "mission": "We are a student-led community passionate about technology and innovation. Our mission is to connect students with industry leaders, provide hands-on learning opportunities, and foster a collaborative environment where the next generation of developers can thrive.",
+      "values": {
+        "innovation": {
+          "title": "Innovation",
+          "description": "Pushing boundaries and exploring cutting-edge technologies"
+        },
+        "collaboration": {
+          "title": "Collaboration",
+          "description": "Building strong partnerships between students and industry"
+        },
+        "growth": {
+          "title": "Growth",
+          "description": "Continuous learning and professional development"
+        }
+      }
+    },    "events": {
+      "upcoming": {
+        "title": "Upcoming Events",
+        "description": "Don't miss out on our latest hackathons, workshops, and networking events"
+      },
+      "viewAll": "View All Events",
+      "noUpcomingEvents": "No upcoming events at the moment. Stay tuned!"
+    },
+    "projects": {
+      "featured": {
+        "title": "Featured Projects",
+        "description": "Discover innovative solutions created by our community"
+      },
+      "viewAll": "View All Projects"
+    }
+  },
+  "events": {
+    "title": "Events",
+    "description": "Join us for exciting hackathons, technical workshops, and networking opportunities with industry leaders.",
+    "tabs": {
+      "upcoming": "Upcoming Events",
+      "past": "Past Events"
+    },
+    "noUpcomingEvents": "No upcoming events at the moment. Stay tuned for exciting announcements!",
+    "register": "Register Now",
+    "learnMore": "Learn More",    "details": {
+      "date": "Date",
+      "time": "Time",
+      "location": "Location",
+      "duration": "Duration",
+      "participants": "Participants",
+      "tags": "Tags"
+    },
+    "backToEvents": "Back to Events",
+    "eventDetails": "Event Details",
+    "about": "About This Event",
+    "whatYoullLearn": "What You'll Learn",
+    "whoShouldAttend": "Who Should Attend",
+    "joinEvent": "Join This Event",
+    "registerNow": "Register now to secure your spot!",
+    "registrationClosed": "Registration Closed",
+    "topics": "Topics",
+    "requirements": "Requirements",
+    "type": "Type"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Explore innovative projects developed by our community members and discover the power of collaborative development.",
+    "viewCode": "View Code",
+    "viewDemo": "View Demo",
+    "technologies": "Technologies",
+    "team": "Team"
+  },
+  "about": {
+    "title": "About DSC Darmstadt",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Developer Student Club Darmstadt is a vibrant community of tech enthusiasts at TU Darmstadt. We bridge the gap between academic learning and industry practice through hands-on projects, hackathons, and collaborative events with leading technology companies."
+    },
+    "goals": {
+      "title": "What We Do",
+      "items": {
+        "connect": "Connect students with industry professionals and mentors",
+        "skills": "Develop practical skills through workshops and coding sessions",
+        "community": "Build a supportive community of developers and innovators",
+        "opportunities": "Create opportunities for internships and career advancement"
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Meet the passionate individuals who make DSC Darmstadt a thriving community of developers and innovators."
+    },    "contact": {
+      "title": "Get In Touch",
+      "description": "Ready to join our community or have questions? We'd love to hear from you!",
+      "email": "Email us",
+      "social": "Follow us on social media",
+      "formTitle": "Send us a message",
+      "formDescription": "Have a question or want to get involved? Drop us a message and we'll get back to you soon!",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Your full name",
+        "email": "Email",
+        "emailPlaceholder": "your.email@example.com",
+        "subject": "Subject",
+        "subjectPlaceholder": "What's this about?",
+        "message": "Message",
+        "messagePlaceholder": "Tell us more about your inquiry...",
+        "submit": "Send Message",
+        "successMessage": "Message sent successfully! We'll get back to you soon.",
+        "errorMessage": "Failed to send message. Please try again or contact us directly."
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "close": "Close",
+    "readMore": "Read more",
+    "showLess": "Show less"
+  },  "footer": {
+    "description": "Developer Student Club at TU Darmstadt - Building the future of technology together.",
+    "links": {
+      "quick": "Quick Links",
+      "connect": "Connect",
+      "legal": "Legal"
+    },
+    "copyright": "© 2025 Developer Student Club Darmstadt. All rights reserved."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home",
+    "goBack": "Go Back"
+  },
+  "error": {
+    "title": "Something Went Wrong",
+    "description": "We encountered an unexpected error. Please try again or contact support if the problem persists.",
+    "technicalDetails": "Technical Details",
+    "tryAgain": "Try Again",
+    "backHome": "Back to Home"
+  }
+}

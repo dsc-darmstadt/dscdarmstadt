@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dsc-darmstadt.de/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /\.
+
+# Allow common web crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
