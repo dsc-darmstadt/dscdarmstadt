@@ -3,12 +3,12 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { UpcomingEvents } from '@/components/home/UpcomingEvents'
 import { FeaturedProjects } from '@/components/home/FeaturedProjects'
-import { 
-  AnimatedHeroSection, 
-  AnimatedHeroButtons, 
-  AnimatedHeroImage, 
-  AnimatedSection, 
-  AnimatedCard 
+import {
+  AnimatedHeroSection,
+  AnimatedHeroButtons,
+  AnimatedHeroImage,
+  AnimatedSection,
+  AnimatedCard
 } from '@/components/home/HomeAnimatedWrapper'
 import { getUpcomingEvents, getFeaturedEvents } from '@/lib/data/events'
 import { getFeaturedProjects } from '@/lib/data/projects'
@@ -18,10 +18,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   console.log('Home page locale:', locale);
-  
+
   const t = await getTranslations({ locale, namespace: 'home' });
   console.log('Translation test:', t('hero.title'));
-  
+
   const upcomingEvents = getUpcomingEvents(3)
   const featuredProjects = getFeaturedProjects(3)
 

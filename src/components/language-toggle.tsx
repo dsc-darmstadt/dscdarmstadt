@@ -12,7 +12,7 @@ export function LanguageToggle() {
   const getToggleUrl = () => {
     const currentLocale = locale
     const newLocale = currentLocale === 'en' ? 'de' : 'en'
-    
+
     // More robust path replacement
     let newPath = pathname
     if (pathname.startsWith(`/${currentLocale}/`)) {
@@ -25,7 +25,7 @@ export function LanguageToggle() {
       // Fallback: ensure the path starts with the new locale
       newPath = `/${newLocale}${pathname.startsWith('/') ? pathname : '/' + pathname}`
     }
-    
+
     return newPath
   }
 
