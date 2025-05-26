@@ -9,6 +9,8 @@ import Link from 'next/link'
 import { Event } from '@/lib/types'
 import { AnimatedWrapper, AnimatedBackButton } from '@/components/events/AnimatedWrapper'
 
+export const runtime = 'edge';
+
 interface EventDetailPageProps {
   params: Promise<{ eventId: string; locale: string }>;
 }

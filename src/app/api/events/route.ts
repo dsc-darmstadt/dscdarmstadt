@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 // TODO: Replace with actual Supabase integration
 export async function GET() {
   try {

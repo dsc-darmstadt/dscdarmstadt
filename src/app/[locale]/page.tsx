@@ -15,6 +15,8 @@ import { getFeaturedProjects } from '@/lib/data/projects'
 import { ArrowRight, Code, Users, Lightbulb, Target } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
+export const runtime = 'edge';
+
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   console.log('Home page locale:', locale);
