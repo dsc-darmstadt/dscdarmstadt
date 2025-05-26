@@ -69,11 +69,9 @@ function EventCard({ event, index }: { event: Event; index: number }) {
               <Link href={`/${locale}/events/${event.id}`}>
                 {t('learnMore')}
               </Link>
-            </Button>
-
-            {event.registrationUrl && (
+            </Button>            {event.registrationLink && (
               <Button variant="outline" asChild>
-                <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
+                <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4 mr-2" />
                   {t('register')}
                 </a>
