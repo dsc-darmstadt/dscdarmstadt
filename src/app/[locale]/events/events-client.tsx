@@ -69,11 +69,9 @@ function EventCard({ event, index }: { event: Event; index: number }) {
               <Link href={`/${locale}/events/${event.id}`}>
                 {t('learnMore')}
               </Link>
-            </Button>
-
-            {event.registrationUrl && (
+            </Button>            {event.registrationLink && (
               <Button variant="outline" asChild>
-                <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">
+                <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4 mr-2" />
                   {t('register')}
                 </a>
@@ -93,7 +91,7 @@ interface EventsClientProps {
 export default function EventsClient({ locale }: EventsClientProps) {
   const t = useTranslations('events')
   const upcomingEvents = getUpcomingEvents()
-  const pastEvents = getPastEvents()
+  const past     = getPastEvents()     
 
   return (
     <div className="container py-20">
@@ -114,10 +112,15 @@ export default function EventsClient({ locale }: EventsClientProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <Tabs defaultValue="upcoming" className="w-full">
+        <Tabs value="upcoming" className="w-full">
           <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-12">
-            <TabsTrigger value="upcoming">{t('tabs.upcoming')}</TabsTrigger>
-            <TabsTrigger value="past">{t('tabs.past')}</TabsTrigger>
+            <TabsTrigger value="upcoming">{t("tabs.upcoming")}</TabsTrigger>
+
+            <TabsTrigger asChild value="past">
+              <Link href={`/${locale}/events/past`} className="w-full text-center">
+                {t("tabs.past")}
+              </Link>
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="upcoming" className="space-y-8">
@@ -138,15 +141,7 @@ export default function EventsClient({ locale }: EventsClientProps) {
                 </p>
               </motion.div>
             )}
-          </TabsContent>
-
-          <TabsContent value="past" className="space-y-8">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {pastEvents.map((event, index) => (
-                <EventCard key={event.id} event={event} index={index} />
-              ))}
-            </div>
-          </TabsContent>
+          </TabsContent> 
         </Tabs>
       </motion.div>
     </div>

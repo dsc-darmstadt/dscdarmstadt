@@ -9,6 +9,8 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Project } from '@/lib/types'
 
+export const runtime = 'edge';
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const t = useTranslations('projects')
 
