@@ -159,7 +159,7 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl md:text-4xl font-bold">{t('mission.title')}</h2>
           <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            {t('mission.intro')}
+            {t('mission.description')}
           </p>
         </motion.div>
 
