@@ -3,30 +3,74 @@ import { Event } from '../types';
 export const events: Event[] = [
   {
     id: "summer-hackathon-2025",
-    title: "Summer Innovation Hackathon 2025",
-    description: "Join us for an exciting 48-hour hackathon focused on sustainable technology solutions. Teams will work on projects addressing climate change, renewable energy, and environmental conservation. Prizes worth €5,000 and mentorship opportunities with leading tech companies await!",
-    date: "2025-07-15T09:00:00",
-    location: "TU Darmstadt, Lichtwiese Campus, Building S2|02",
-    imageUrl: "/images/placeholder-hackathon.jpg",
-    registrationLink: "https://forms.example.com/summer-hackathon-2025",
+    title: "LeetCode TechJam 2.0",
+    description: "Join us for the second edition of our algorithmic coding night! Tackle new LeetCode-style challenges, compete solo or in teams, and test your skills under time pressure. Expect fun twists, fresh problems, and great vibes with fellow coders. Snacks, prizes, and tech talks included!",
+    date: "To be announced",
+    location: "To be announced",
+    imageUrl: "/images/leetcode.jpg",
+    registrationLink: "To be announced",
     isPast: false,
-    tags: ["hackathon", "sustainability", "innovation", "prizes"],
-    duration: "48 hours",
+    tags: ["challenge", "problem solving", "prizes"],
+    duration: "4 hours",
     maxParticipants: 120,
     organizer: "DSC Darmstadt"
   },
   {
     id: "react-workshop-june",
-    title: "Advanced React & Next.js Workshop",
-    description: "Master modern React development with Next.js 15, Server Components, and the latest hooks. This hands-on workshop covers state management, performance optimization, and deployment strategies. Perfect for intermediate developers looking to level up their skills.",
-    date: "2025-06-10T14:00:00",
-    location: "TU Darmstadt, Stadtmitte Campus, Room S2|02 A213",
-    imageUrl: "/images/placeholder-workshop.jpg",
-    registrationLink: "https://forms.example.com/react-workshop",
+    title: "Monthly Coding Space",
+    description: "Connect with fellow students and developers at our Monthly Coding Space! This relaxed meetup is all about sharing project ideas, asking questions, and building community. Whether you're just starting out or already deep into development, join us to chat tech, get inspired, and find collaborators. All experience levels and interests welcome!",
+    date: "To be announced",
+    location: "To be announced",
+    imageUrl: "images/github.jpg",
+    registrationLink: "To be announced",
     isPast: false,
-    tags: ["workshop", "react", "nextjs", "web development"],
+    tags: ["workshop", "community", "project exchange"],
     duration: "4 hours",
     maxParticipants: 30,
+    organizer: "DSC Darmstadt"
+  },
+  {
+    id: "summer-hackathon-2025",
+    title: "LeetCode TechJam 1.0",
+    description: "Join us for an intense evening of algorithmic problem-solving! Compete solo or in teams to solve LeetCode-style challenges under time pressure. Great for testing your skills and meeting other passionate coders. Snacks and prizes included!",
+    date: "2024-01-19T18:00:00",
+    isPast: false,
+    tags: ["hackathon", "community"],
+    location: "HDA, Computer Science Faculty, Room D 14",
+    imageUrl: "/images/leetcode.jpg",
+    organizer: "DSC Darmstadt"
+  },
+   {
+    id: "summer-hackathon-2025",
+    title: "Developer & Students Meetup",
+    description: "A casual networking evening for developers and students to connect, exchange project ideas, and explore collaboration opportunities. Expect short lightning talks, free snacks, and great conversations about tech, careers, and innovation.",
+    date: "2023-12-14T18:00:00",
+    isPast: false,
+    tags: ["meetup", "community"],
+    location: "Darmstadt Schloss, Christmas Market",
+    imageUrl: "/images/placeholder-hackathon.jpg",
+    organizer: "DSC Darmstadt"
+  },
+   {
+    id: "summer-hackathon-2025",
+    title: "AI in Tech Frankfurt",
+    description: "Explore the latest advancements in AI and how they're transforming industries. This conference features talks from AI researchers, startup founders, and tech professionals, with a focus on real-world applications in automation, finance, and health tech.",
+    date: "2024-07-23T18:00:00",
+    isPast: false,
+    tags: ["networking", "community"],
+    location: "Waxy's Irish Pub, Frankfurt",
+    imageUrl: "/images/ai.jpg",
+    organizer: "DSC Darmstadt"
+  },
+     {
+    id: "summer-hackathon-2025",
+    title: "Startup Pitch Night Wiesbaden",
+    description: "Witness early-stage startups pitch their ideas to a panel of investors and entrepreneurs. Gain insights into the startup ecosystem, learn what makes a great pitch, and network with founders and VCs in a relaxed atmosphere.",
+    date: "2024-06-05T17:30:00",
+    isPast: false,
+    tags: ["pitching", "innovation", "community"],
+    location: "Heimathafen Wiesbaden",
+    imageUrl: "/images/startups.png",
     organizer: "DSC Darmstadt"
   },
   {
@@ -78,11 +122,18 @@ export function getUpcomingEvents(limit?: number): Event[] {
   return limit ? upcoming.slice(0, limit) : upcoming;
 }
 
-export function getPastEvents(limit?: number): Event[] {
+/*export function getPastEvents(limit?: number): Event[] { // not necessary
   const past = events
     .filter(event => event.isPast)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   return limit ? past.slice(0, limit) : past;
+}*/
+
+export function getPastEvents(limit?: number): Event[] {
+  const sorted_events = events.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  return limit ? sorted_events.slice(0, limit) : sorted_events;
 }
 
 export function getAllEvents(): Event[] {

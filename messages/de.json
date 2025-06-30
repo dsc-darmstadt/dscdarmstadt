@@ -7,8 +7,8 @@
   },
   "home": {    "hero": {
       "title": "Developer Student Club Darmstadt",
-      "subtitle": "Die Brücke zwischen Studenten und Industrie durch Innovation, Zusammenarbeit und technische Exzellenz",
-      "description": "Tritt der führenden Entwicklergemeinschaft der TU Darmstadt bei, wo Studenten sich mit führenden Unternehmen vernetzen, an spannenden Hackathons teilnehmen und gemeinsam die Zukunft der Technologie gestalten.",
+      "subtitle": "Die Brücke zwischen Theorie und Praxis durch Innovation und Zusammenarbeit",
+      "description": "Gemeinsam wachsen, lernen und gestalten – im Developer Student Club der TU Darmstadt verbinden wir Studierende mit der Tech-Welt und schaffen Raum für Ideen, Innovation und Zusammenarbeit.",
       "tagline": "Innovative Lösungen gemeinsam entwickeln",
       "cta": {
         "events": "Events entdecken",
@@ -16,8 +16,8 @@
       }
     },
     "about": {
-      "title": "Was ist DSC Darmstadt?",
-      "mission": "Wir sind eine studentisch geführte Gemeinschaft mit Leidenschaft für Technologie und Innovation. Unsere Mission ist es, Studenten mit Branchenführern zu verbinden, praktische Lerngelegenheiten zu bieten und ein kollaboratives Umfeld zu schaffen, in dem die nächste Generation von Entwicklern gedeihen kann.",
+      "title": "Was ist der DSC Darmstadt?",
+      "mission": "Wir sind eine studentische Initiative an der TU Darmstadt, die technikbegeisterte Studierende miteinander und mit der Industrie vernetzt. Ziel ist es, praxisorientiertes Lernen, Innovation und Zusammenarbeit zu fördern. Durch Workshops, Hackathons und Networking-Events bieten wir eine Plattform, um Fähigkeiten zu entwickeln, Ideen auszutauschen und gemeinsam an Projekten zu arbeiten.",
       "values": {
         "innovation": {
           "title": "Innovation",
@@ -25,7 +25,7 @@
         },
         "collaboration": {
           "title": "Zusammenarbeit",
-          "description": "Starke Partnerschaften zwischen Studenten und Industrie aufbauen"
+          "description": "Studierende miteinander und mit der Industrie vernetzen – für nachhaltige Zusammenarbeit und gemeinsamen Erfolg"
         },
         "growth": {
           "title": "Wachstum",
@@ -36,6 +36,10 @@
       "upcoming": {
         "title": "Kommende Events",
         "description": "Verpasse nicht unsere neuesten Hackathons, Workshops und Networking-Events"
+      },
+      "past": {
+        "title": "Vergangene Events",
+        "description": "Entdecke Highlights vergangener Hackathons, Workshops und Meetups."
       },
       "viewAll": "Alle Events anzeigen",
       "noUpcomingEvents": "Momentan keine anstehenden Events. Bleibt dran!"
@@ -89,15 +93,16 @@
     "title": "Über DSC Darmstadt",
     "mission": {
       "title": "Unsere Mission",
-      "description": "Der Developer Student Club Darmstadt ist eine lebendige Gemeinschaft von Tech-Enthusiasten an der TU Darmstadt. Wir schlagen die Brücke zwischen akademischem Lernen und Industriepraxis durch praktische Projekte, Hackathons und gemeinsame Events mit führenden Technologieunternehmen."
+      "intro": "Wir fördern technologische Neugier, Zusammenarbeit und persönliches Wachstum. Unsere Community bietet Raum für Austausch, gemeinsames Lernen und kreative Ideen. So schaffen wir ein Umfeld, in dem Studierende sich vernetzen, weiterentwickeln und aktiv Projekte mitgestalten.",
+      "description": "Wir sind eine studentische Initiative an der TU Darmstadt, die technikbegeisterte Studierende miteinander und mit der Industrie vernetzt. Ziel ist es, praxisorientiertes Lernen, Innovation und Zusammenarbeit zu fördern. Durch Workshops, Hackathons und Networking-Events bieten wir eine Plattform, um Fähigkeiten zu entwickeln, Ideen auszutauschen und gemeinsam an Projekten zu arbeiten."
     },
     "goals": {
       "title": "Was wir tun",
       "items": {
-        "connect": "Studenten mit Branchenprofis und Mentoren verbinden",
+        "connect": "Studierende miteinander und mit Fachleuten aus Industrie und Forschung vernetzen",
         "skills": "Praktische Fähigkeiten durch Workshops und Coding-Sessions entwickeln",
-        "community": "Eine unterstützende Gemeinschaft von Entwicklern und Innovatoren aufbauen",
-        "opportunities": "Möglichkeiten für Praktika und Karriereentwicklung schaffen"
+        "community": "Eine unterstützende Entwickler-Community aufbauen",
+        "opportunities": "Chancen für Praktika und berufliche Orientierung schaffen"
       }
     },
     "team": {

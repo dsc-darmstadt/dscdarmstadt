@@ -3,9 +3,9 @@ import { TeamMember } from '../types';
 export const teamMembers: TeamMember[] = [
   {
     id: "president-Jakob",
-    name: "Jakob Max Steinke",
+    name: "Jakob Steinke",
     role: "President",
-    bio: "Computer Science student passionate about AI and machine learning. Leading DSC Darmstadt's strategic initiatives and fostering partnerships with industry leaders.",
+    bio: "Computer Science student with a passion for data engineering and algorithms. Leading strategic initiatives at DSC Darmstadt and building partnerships with industry professionals.",
     imageUrl: "/images/placeholder-team-1.jpg",
     socialLinks: {
       linkedin: "https://linkedin.com/in/username",
@@ -15,8 +15,8 @@ export const teamMembers: TeamMember[] = [
     position: 1
   },
   {
-      id: "vp-events-maria",
-      name: "Maria Rodriguez",
+      id: "vp-events-mehmet",
+      name: "Mehmet Bulut",
       role: "Vice President - Events",
       bio: "Event management specialist coordinating our hackathons, workshops, and industry networking events. Ensuring every event creates meaningful connections.",
       imageUrl: "/images/placeholder-team-3.jpg",
@@ -28,8 +28,8 @@ export const teamMembers: TeamMember[] = [
         position: 3
     },
     {
-        id: "marketing-lead-tom",
-        name: "Tom Wagner",
+        id: "marketing-lead-samer",
+        name: "Samer Boughanmi",
         role: "Marketing & Communications Lead",
         bio: "Digital marketing enthusiast managing our social media presence, content creation, and community outreach initiatives.",
         imageUrl: "/images/placeholder-team-4.jpg",
@@ -41,8 +41,8 @@ export const teamMembers: TeamMember[] = [
         position: 4
     },
     {
-        id: "partnerships-emma",
-        name: "Emma Fischer",
+        id: "partnerships-abdelhamid",
+        name: "Abdelhamid Ed Houari",
         role: "Industry Partnerships Coordinator",
         bio: "Business student building bridges between DSC Darmstadt and industry partners. Facilitating sponsorships, mentorship programs, and career opportunities.",
         imageUrl: "/images/placeholder-team-5.jpg",
@@ -66,8 +66,8 @@ export const teamMembers: TeamMember[] = [
         position: 2
     },
     {
-      id: "vp-tech-sarah",
-      name: "Sarah Chen",
+      id: "vp-tech-arda",
+      name: "Arda Nazim Atalay",
       role: "Vice President - Technology",
       bio: "Full-stack developer with expertise in modern web technologies. Organizes technical workshops and manages our development projects and hackathons.",
       imageUrl: "/images/placeholder-team-2.jpg",

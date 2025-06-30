@@ -15,7 +15,7 @@ export function Navbar() {
   const navigation = [
     { name: t('home'), href: '/' },
     { name: t('events'), href: '/events' },
-    { name: t('projects'), href: '/projects' },
+    //{ name: t('projects'), href: '/projects' },
     { name: t('about'), href: '/about' },
   ]
 

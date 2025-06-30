@@ -37,6 +37,10 @@
         "title": "Upcoming Events",
         "description": "Don't miss out on our latest hackathons, workshops, and networking events"
       },
+      "past": {
+        "title": "Past Events",
+        "description": "Explore highlights from past hackathons, workshops, and meetups."
+      },
       "viewAll": "View All Events",
       "noUpcomingEvents": "No upcoming events at the moment. Stay tuned!"
     },

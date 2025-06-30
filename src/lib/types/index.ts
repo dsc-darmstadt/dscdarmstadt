@@ -6,12 +6,22 @@ export interface Event {
   location: string;
   imageUrl: string;
   registrationLink?: string;
-  isPast: boolean;
+  isPast?: boolean; // not necessary
   tags: string[];
   duration?: string;
   maxParticipants?: number;
   organizer?: string;
 }
+
+// export interface PastEvent {
+//   id: string;
+//   title: string;
+//   description: string;
+//   date: string;
+//   location: string;
+//   imageUrl: string;
+//   organizer?: string;
+// }
 
 export interface Project {
   id: string;
