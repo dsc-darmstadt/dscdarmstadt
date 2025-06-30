@@ -1,5 +1,7 @@
 import PastEventsClient from '../past-events-client'
 
+export const runtime = 'edge';
+
 interface Props {
   params: { locale: string }
 }
