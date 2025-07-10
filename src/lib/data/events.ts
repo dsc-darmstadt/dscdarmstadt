@@ -48,7 +48,7 @@ export const events: Event[] = [
     isPast: false,
     tags: ["meetup", "community"],
     location: "Darmstadt Schloss, Christmas Market",
-    imageUrl: "/images/placeholder-hackathon.jpg",
+    imageUrl: "/images/christmas.jpg",
     organizer: "DSC Darmstadt"
   },
    {
@@ -79,7 +79,7 @@ export const events: Event[] = [
     description: "Connect with industry leaders from Google, Microsoft, and SAP as they share insights on the latest AI trends. Network with professionals, attend technical talks, and discover internship opportunities in machine learning and data science.",
     date: "2025-08-20T10:00:00",
     location: "TU Darmstadt, darmstadtium Convention Center",
-    imageUrl: "/images/placeholder-symposium.jpg",
+    imageUrl: "/images/aiml.jpg",
     registrationLink: "https://forms.example.com/ai-symposium",
     isPast: false,
     tags: ["symposium", "ai", "machine learning", "networking", "industry"],

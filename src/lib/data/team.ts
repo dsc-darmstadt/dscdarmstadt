@@ -5,7 +5,7 @@ export const teamMembers: TeamMember[] = [
     id: "president-Jakob",
     name: "Jakob Steinke",
     role: "President",
-    bio: "Computer Science student with a passion for data engineering and algorithms. Leading strategic initiatives at DSC Darmstadt and building partnerships with industry professionals.",
+    bio: "Computer Science student focused on data systems and algorithm design. Drives strategic growth at DSC Darmstadt and fosters collaboration with industry partners.",
     imageUrl: "/images/placeholder-team-1.jpg",
     socialLinks: {
       linkedin: "https://linkedin.com/in/username",
@@ -18,7 +18,7 @@ export const teamMembers: TeamMember[] = [
       id: "vp-events-mehmet",
       name: "Mehmet Bulut",
       role: "Vice President - Events",
-      bio: "Event management specialist coordinating our hackathons, workshops, and industry networking events. Ensuring every event creates meaningful connections.",
+      bio: "Organizes hackathons, workshops, and networking events that bring the DSC community together. Focused on creating experiences that inspire connection and collaboration.",
       imageUrl: "/images/placeholder-team-3.jpg",
       socialLinks: {
           linkedin: "https://linkedin.com/in/maria-rodriguez",
@@ -30,8 +30,8 @@ export const teamMembers: TeamMember[] = [
     {
         id: "marketing-lead-samer",
         name: "Samer Boughanmi",
-        role: "Marketing & Communications Lead",
-        bio: "Digital marketing enthusiast managing our social media presence, content creation, and community outreach initiatives.",
+        role: "Core Team Member",
+        bio: "Tech enthusiast and CS student shaping the culture of DSC Darmstadt through project work, mentorship, and meaningful peer collaboration.",
         imageUrl: "/images/placeholder-team-4.jpg",
         socialLinks: {
             linkedin: "https://linkedin.com/in/tom-wagner",
@@ -43,8 +43,8 @@ export const teamMembers: TeamMember[] = [
     {
         id: "partnerships-abdelhamid",
         name: "Abdelhamid Ed Houari",
-        role: "Industry Partnerships Coordinator",
-        bio: "Business student building bridges between DSC Darmstadt and industry partners. Facilitating sponsorships, mentorship programs, and career opportunities.",
+        role: "Core Team Member",
+        bio: "Active contributor to DSC’s technical and event-driven projects. Brings a CS background and collaborative mindset to every challenge.",
         imageUrl: "/images/placeholder-team-5.jpg",
         socialLinks: {
             linkedin: "https://linkedin.com/in/emma-fischer",
@@ -77,7 +77,46 @@ export const teamMembers: TeamMember[] = [
         email: "tech@dsc-darmstadt.de"
       },
     position: 6
-  }
+  },
+  {
+        id: "dev-lead-adham",
+        name: "Harjot Singh Maan",
+        role: "Core Team Member",
+        bio: "Blending software engineering experience with community impact. A CS student actively involved in shaping real-world projects at DSC Darmstadt.",
+        imageUrl: "/images/placeholder-team-6.jpg",
+        socialLinks: {
+            linkedin: "https://linkedin.com/in/adham-elaraby",
+            github: "https://github.com/adham-elaraby",
+            email: "dev@dsc-darmstadt.de"
+        },
+        position: 7
+    },
+    {
+        id: "dev-lead-adham",
+        name: "Bahadir Acikbas",
+        role: "Core Team Member",
+        bio: "Combines a strong CS foundation with active involvement in DSC Darmstadt. Supports workshops, coding projects, and peer collaboration.",
+        imageUrl: "/images/placeholder-team-6.jpg",
+        socialLinks: {
+            linkedin: "https://linkedin.com/in/adham-elaraby",
+            github: "https://github.com/adham-elaraby",
+            email: "dev@dsc-darmstadt.de"
+        },
+        position: 8
+    },
+    {
+        id: "dev-lead-adham",
+        name: "Prit Goyani",
+        role: "Core Team Member",
+        bio: "Computer Science student supporting the club’s growth through technical projects, peer events, and collaborative planning.",
+        imageUrl: "/images/placeholder-team-6.jpg",
+        socialLinks: {
+            linkedin: "https://linkedin.com/in/adham-elaraby",
+            github: "https://github.com/adham-elaraby",
+            email: "dev@dsc-darmstadt.de"
+        },
+        position: 9
+    }
 ];
 
 export function getTeamMembers(): TeamMember[] {
