@@ -1,4 +1,4 @@
-import { Event, PastEvent } from '../types';
+import { Event } from '../types';
 
 export const events: Event[] = [
   {
@@ -28,14 +28,58 @@ export const events: Event[] = [
     duration: "4 hours",
     maxParticipants: 30,
     organizer: "DSC Darmstadt"
-  }/*,
+  },
+  {
+    id: "summer-hackathon-2025",
+    title: "LeetCode TechJam 1.0",
+    description: "Join us for an intense evening of algorithmic problem-solving! Compete solo or in teams to solve LeetCode-style challenges under time pressure. Great for testing your skills and meeting other passionate coders. Snacks and prizes included!",
+    date: "2024-01-19T18:00:00",
+    isPast: false,
+    tags: ["hackathon", "community"],
+    location: "HDA, Computer Science Faculty, Room D 14",
+    imageUrl: "/images/leetcode.jpg",
+    organizer: "DSC Darmstadt"
+  },
+   {
+    id: "summer-hackathon-2025",
+    title: "Developer & Students Meetup",
+    description: "A casual networking evening for developers and students to connect, exchange project ideas, and explore collaboration opportunities. Expect short lightning talks, free snacks, and great conversations about tech, careers, and innovation.",
+    date: "2023-12-14T18:00:00",
+    isPast: false,
+    tags: ["meetup", "community"],
+    location: "Darmstadt Schloss, Christmas Market",
+    imageUrl: "/images/christmas.jpg",
+    organizer: "DSC Darmstadt"
+  },
+   {
+    id: "summer-hackathon-2025",
+    title: "AI in Tech Frankfurt",
+    description: "Explore the latest advancements in AI and how they're transforming industries. This conference features talks from AI researchers, startup founders, and tech professionals, with a focus on real-world applications in automation, finance, and health tech.",
+    date: "2024-07-23T18:00:00",
+    isPast: false,
+    tags: ["networking", "community"],
+    location: "Waxy's Irish Pub, Frankfurt",
+    imageUrl: "/images/ai.jpg",
+    organizer: "DSC Darmstadt"
+  },
+     {
+    id: "summer-hackathon-2025",
+    title: "Startup Pitch Night Wiesbaden",
+    description: "Witness early-stage startups pitch their ideas to a panel of investors and entrepreneurs. Gain insights into the startup ecosystem, learn what makes a great pitch, and network with founders and VCs in a relaxed atmosphere.",
+    date: "2024-06-05T17:30:00",
+    isPast: false,
+    tags: ["pitching", "innovation", "community"],
+    location: "Heimathafen Wiesbaden",
+    imageUrl: "/images/startups.png",
+    organizer: "DSC Darmstadt"
+  },
   {
     id: "ai-ml-symposium",
     title: "AI & Machine Learning Industry Symposium",
     description: "Connect with industry leaders from Google, Microsoft, and SAP as they share insights on the latest AI trends. Network with professionals, attend technical talks, and discover internship opportunities in machine learning and data science.",
     date: "2025-08-20T10:00:00",
     location: "TU Darmstadt, darmstadtium Convention Center",
-    imageUrl: "/images/placeholder-symposium.jpg",
+    imageUrl: "/images/aiml.jpg",
     registrationLink: "https://forms.example.com/ai-symposium",
     isPast: false,
     tags: ["symposium", "ai", "machine learning", "networking", "industry"],
@@ -68,46 +112,7 @@ export const events: Event[] = [
     duration: "5 hours",
     maxParticipants: 40,
     organizer: "DSC Darmstadt"
-  }*/
-];
-
-export const pastEvents: PastEvent[] = [
-  {
-    id: "summer-hackathon-2025",
-    title: "LeetCode TechJam 1.0",
-    description: "Join us for an intense evening of algorithmic problem-solving! Compete solo or in teams to solve LeetCode-style challenges under time pressure. Great for testing your skills and meeting other passionate coders. Snacks and prizes included!",
-    date: "2024-01-19T18:00:00",
-    location: "HDA, Computer Science Faculty, Room D 14",
-    imageUrl: "/images/leetcode.jpg",
-    organizer: "DSC Darmstadt"
-  },
-   {
-    id: "summer-hackathon-2025",
-    title: "Developer & Students Meetup",
-    description: "A casual networking evening for developers and students to connect, exchange project ideas, and explore collaboration opportunities. Expect short lightning talks, free snacks, and great conversations about tech, careers, and innovation.",
-    date: "2023-12-14T18:00:00",
-    location: "Darmstadt Schloss, Christmas Market",
-    imageUrl: "/images/placeholder-hackathon.jpg",
-    organizer: "DSC Darmstadt"
-  },
-   {
-    id: "summer-hackathon-2025",
-    title: "AI in Tech Frankfurt",
-    description: "Explore the latest advancements in AI and how they're transforming industries. This conference features talks from AI researchers, startup founders, and tech professionals, with a focus on real-world applications in automation, finance, and health tech.",
-    date: "2024-07-23T18:00:00",
-    location: "Waxy's Irish Pub, Frankfurt",
-    imageUrl: "/images/ai.jpg",
-    organizer: "DSC Darmstadt"
-  },
-     {
-    id: "summer-hackathon-2025",
-    title: "Startup Pitch Night Wiesbaden",
-    description: "Witness early-stage startups pitch their ideas to a panel of investors and entrepreneurs. Gain insights into the startup ecosystem, learn what makes a great pitch, and network with founders and VCs in a relaxed atmosphere.",
-    date: "2024-06-05T17:30:00",
-    location: "Heimathafen Wiesbaden",
-    imageUrl: "/images/startups.png",
-    organizer: "DSC Darmstadt"
-  },
+  }
 ];
 
 export function getUpcomingEvents(limit?: number): Event[] {
@@ -116,6 +121,7 @@ export function getUpcomingEvents(limit?: number): Event[] {
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   return limit ? upcoming.slice(0, limit) : upcoming;
 }
+
 /*export function getPastEvents(limit?: number): Event[] { // not necessary
   const past = events
     .filter(event => event.isPast)
@@ -123,11 +129,11 @@ export function getUpcomingEvents(limit?: number): Event[] {
   return limit ? past.slice(0, limit) : past;
 }*/
 
-export function getPastEvents(limit?: number): PastEvent[] {
-  const sorted = [...pastEvents].sort(
+export function getPastEvents(limit?: number): Event[] {
+  const sorted_events = events.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-  return limit ? sorted.slice(0, limit) : sorted;
+  return limit ? sorted_events.slice(0, limit) : sorted_events;
 }
 
 export function getAllEvents(): Event[] {

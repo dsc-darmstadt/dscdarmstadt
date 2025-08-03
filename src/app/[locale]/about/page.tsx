@@ -111,7 +111,7 @@ export default function AboutPage() {
     {
       icon: Target,
       title: t('goals.items.opportunities'),
-      description: "Connecting students with internship opportunities, job placements, and career development resources in the tech industry."
+      description: "Providing students internship opportunities, job placements, and career development resources in the tech industry."
     }
   ]
 
@@ -159,7 +159,7 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl md:text-4xl font-bold">{t('mission.title')}</h2>
           <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            {t('mission.intro')}
+            {t('mission.description')}
           </p>
         </motion.div>
 
@@ -242,7 +242,7 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl md:text-4xl font-bold">Leadership Team</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Meet the passionate leaders driving DSC Darmstadt forward
+            Get to know the team organizing and running DSC Darmstadt
           </p>
         </motion.div>
 

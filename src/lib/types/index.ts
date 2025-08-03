@@ -6,7 +6,7 @@ export interface Event {
   location: string;
   imageUrl: string;
   registrationLink?: string;
-  isPast: boolean; // not necessary
+  isPast?: boolean; // not necessary
   tags: string[];
   duration?: string;
   maxParticipants?: number;
