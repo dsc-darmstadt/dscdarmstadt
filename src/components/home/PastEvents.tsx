@@ -52,7 +52,7 @@ export function PastEvents({ events }: PastEventsProps) {
             {/* ─────────────────────────────────────────────────── */}
 
             <CardHeader>
-              <CardTitle className="line-clamp-2">{event.title}</CardTitle>
+              <CardTitle className="line-clamp-2 pb-1">{event.title}</CardTitle>
               <CardDescription className="line-clamp-3">
                 {event.description}
               </CardDescription>
