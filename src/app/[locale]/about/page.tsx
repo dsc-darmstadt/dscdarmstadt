@@ -117,41 +117,41 @@ export default function AboutPage() {
   const goals = [
     {
       icon: Users,
-      title: t('goals.items.connect'),
-      description: "Building meaningful relationships between students and tech industry professionals through mentorship programs and networking events."
+      title: t('goals.items.connect.title'),
+      description: t('goals.items.connect.description'),
     },
     {
       icon: Code,
-      title: t('goals.items.skills'),
-      description: "Providing hands-on coding experiences, technical workshops, and project-based learning opportunities to enhance practical skills."
+      title: t('goals.items.skills.title'),
+      description: t('goals.items.skills.description'),
     },
     {
       icon: Heart,
-      title: t('goals.items.community'),
-      description: "Creating an inclusive and supportive environment where developers of all levels can learn, collaborate, and grow together."
+      title: t('goals.items.community.title'),
+      description: t('goals.items.community.description'),
     },
     {
       icon: Target,
-      title: t('goals.items.opportunities'),
-      description: "Connecting students with internship opportunities, job placements, and career development resources in the tech industry."
+      title: t('goals.items.opportunities.title'),
+      description: t('goals.items.opportunities.description'),
     }
   ]
 
   const values = [
     {
       icon: Lightbulb,
-      title: "Innovation",
-      description: "We embrace cutting-edge technologies and encourage creative problem-solving to address real-world challenges."
+      title: t('values.corevalues.corevalue1.title'),
+      description: t('values.corevalues.corevalue1.description')
     },
     {
       icon: Globe,
-      title: "Inclusivity",
-      description: "We welcome students from all backgrounds, majors, and skill levels to create a diverse and vibrant community."
+      title: t('values.corevalues.corevalue2.title'),
+      description: t('values.corevalues.corevalue2.description')
     },
     {
       icon: Zap,
-      title: "Excellence",
-      description: "We strive for high-quality events, projects, and learning experiences that add genuine value to our members."
+      title: t('values.corevalues.corevalue3.title'),
+      description: t('values.corevalues.corevalue3.description')
     }
   ]
 
@@ -171,7 +171,7 @@ export default function AboutPage() {
       </motion.div>
 
       {/* Mission Section */}
-      <section className="space-y-12">
+      <section className="space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -180,9 +180,6 @@ export default function AboutPage() {
           className="text-center space-y-4"
         >
           <h2 className="text-3xl md:text-4xl font-bold">{t('mission.title')}</h2>
-          <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
-            {t('mission.description')}
-          </p>
         </motion.div>
 
         {/* Goals Grid */}
@@ -222,9 +219,9 @@ export default function AboutPage() {
           viewport={{ once: true }}
           className="text-center space-y-4 mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">Our Values</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">{t('values.title')}</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            The principles that guide everything we do at DSC Darmstadt
+            {t('values.description')}
           </p>
         </motion.div>
 
@@ -264,7 +261,7 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl md:text-4xl font-bold">Leadership Team</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Meet the passionate leaders driving DSC Darmstadt forward
+            {t('team.leadersdescription')}
           </p>
         </motion.div>
 
