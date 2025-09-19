@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
 
 export const runtime = 'edge';
 
@@ -32,25 +33,34 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Replace with actual email service integration
-    // For now, just log the contact form submission
-    console.log('Contact form submission:', {
-      name,
-      email,
-      subject: subject || 'No subject',
-      message,
-      timestamp: new Date().toISOString()
-    });
+    // Save to Supabase
+    const { data, error } = await supabase
+      .from('contact_submissions')
+      .insert({
+        name,
+        email,
+        message: subject ? `Subject: ${subject}\n\n${message}` : message
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Supabase error:', error);
+      throw error;
+    }
+
+    console.log('Contact form submission saved:', data);
 
     // TODO: Send email using service like SendGrid, Resend, or Nodemailer
-    // TODO: Store submission in Supabase database for record keeping
-
-    // Simulate processing delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // TODO: Add email notifications for contact form submissions
 
     return NextResponse.json({
       success: true,
-      message: 'Message sent successfully! We\'ll get back to you soon.'
+      message: 'Message sent successfully! We\'ll get back to you soon.',
+      data: {
+        id: data.id,
+        timestamp: data.created_at
+      }
     });
   } catch (error) {
     console.error('Error processing contact form:', error);

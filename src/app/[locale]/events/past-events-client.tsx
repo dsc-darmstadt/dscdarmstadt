@@ -1,6 +1,7 @@
 "use client"
 
 import { useTranslations, useLocale } from "next-intl"
+import { useState, useEffect } from "react"
 import {
   Tabs,
   TabsList,
@@ -18,11 +19,10 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Calendar, Clock, MapPin } from "lucide-react"
 
-import { getPastEvents } from "@/lib/data/events"
-import { PastEvent } from "@/lib/types"
+import { Event } from "@/lib/types"
 import { formatDate, formatTime } from "@/lib/utils"
 
-function PastEventCard({ event, index }: { event: PastEvent; index: number }) {
+function PastEventCard({ event, index }: { event: Event; index: number }) {
   const locale = useLocale()
 
   return (
@@ -65,7 +65,65 @@ interface PastEventsClientProps {
 
 export default function PastEventsClient({ locale }: PastEventsClientProps) {
   const t = useTranslations("events")
-  const events = getPastEvents()
+  const [events, setEvents] = useState<Event[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchPastEvents() {
+      try {
+        setLoading(true)
+        const response = await fetch('/api/events')
+        const result = await response.json()
+        
+        if (!result.success) {
+          throw new Error(result.error || 'Failed to fetch events')
+        }
+        
+        // Filter past events on client side
+        const now = new Date()
+        const pastEvents = result.data
+          .filter((event: Event) => new Date(event.date) < now)
+          .sort((a: Event, b: Event) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        
+        setEvents(pastEvents)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error')
+        console.error('Error fetching past events:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchPastEvents()
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="container py-20">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading events...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="container py-20">
+        <div className="text-center">
+          <p className="text-red-500">Error: {error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="mt-4 px-4 py-2 bg-primary text-white rounded"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="container py-20">

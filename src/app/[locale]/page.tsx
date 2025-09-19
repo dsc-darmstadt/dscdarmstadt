@@ -11,7 +11,7 @@ import {
   AnimatedSection,
   AnimatedCard
 } from '@/components/home/HomeAnimatedWrapper'
-import { getUpcomingEvents, getPastEvents, getFeaturedEvents } from '@/lib/data/events'
+import { getUpcomingEvents, getPastEvents } from '@/lib/data/events'
 import { getFeaturedProjects } from '@/lib/data/projects'
 import { ArrowRight, Code, Users, Lightbulb, Target } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -25,8 +25,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations({ locale, namespace: 'home' });
   console.log('Translation test:', t('hero.title'));
 
-  const upcomingEvents = getUpcomingEvents(3)
-  const pastEvents = getPastEvents(3)
+  const upcomingEvents = await getUpcomingEvents(3)
+  const pastEvents = await getPastEvents(3)
   const featuredProjects = getFeaturedProjects(3)
 
   const values = [

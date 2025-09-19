@@ -79,7 +79,8 @@
     "registrationClosed": "Registration Closed",
     "topics": "Topics",
     "requirements": "Requirements",
-    "type": "Type"
+    "type": "Type",
+    "unlimited": "Unlimited"
   },
   "projects": {
     "title": "Projects",

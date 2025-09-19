@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { getTeamMembers, getLeadershipTeam } from '@/lib/data/team'
+import { getTeamMembers, getLeadershipMembers } from '@/lib/data/team-new'
 import {
   Users,
   Code,
@@ -22,6 +22,8 @@ import {
 } from 'lucide-react'
 import { ContactForm } from '@/components/about/ContactForm'
 import { TeamMember } from '@/lib/types'
+import { useState, useEffect } from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 function TeamMemberCard({ member, index }: { member: TeamMember; index: number }) {
   return (
@@ -89,8 +91,28 @@ function TeamMemberCard({ member, index }: { member: TeamMember; index: number }
 
 export default function AboutPage() {
   const t = useTranslations('about')
-  const teamMembers = getTeamMembers()
-  const leadershipTeam = getLeadershipTeam()
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
+  const [leadershipTeam, setLeadershipTeam] = useState<TeamMember[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchTeamData = async () => {
+      try {
+        const [allTeam, leadership] = await Promise.all([
+          getTeamMembers(),
+          getLeadershipMembers()
+        ])
+        setTeamMembers(allTeam)
+        setLeadershipTeam(leadership)
+      } catch (error) {
+        console.error('Error fetching team data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchTeamData()
+  }, [])
 
   const goals = [
     {
@@ -111,7 +133,7 @@ export default function AboutPage() {
     {
       icon: Target,
       title: t('goals.items.opportunities'),
-      description: "Providing students internship opportunities, job placements, and career development resources in the tech industry."
+      description: "Connecting students with internship opportunities, job placements, and career development resources in the tech industry."
     }
   ]
 
@@ -242,14 +264,28 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl md:text-4xl font-bold">Leadership Team</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Get to know the team organizing and running DSC Darmstadt
+            Meet the passionate leaders driving DSC Darmstadt forward
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {leadershipTeam.map((member, index) => (
-            <TeamMemberCard key={member.id} member={member} index={index} />
-          ))}
+          {loading ? (
+            // Loading skeleton for leadership team
+            Array.from({ length: 3 }).map((_, index) => (
+              <div key={index} className="space-y-4">
+                <Skeleton className="aspect-square rounded-t-lg" />
+                <div className="p-6 space-y-2">
+                  <Skeleton className="h-4 w-3/4 mx-auto" />
+                  <Skeleton className="h-3 w-1/2 mx-auto" />
+                  <Skeleton className="h-20 w-full" />
+                </div>
+              </div>
+            ))
+          ) : (
+            leadershipTeam.map((member, index) => (
+              <TeamMemberCard key={member.id} member={member} index={index} />
+            ))
+          )}
         </div>
       </section>
 
@@ -269,9 +305,23 @@ export default function AboutPage() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <TeamMemberCard key={member.id} member={member} index={index} />
-          ))}
+          {loading ? (
+            // Loading skeleton for full team
+            Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="space-y-4">
+                <Skeleton className="aspect-square rounded-t-lg" />
+                <div className="p-6 space-y-2">
+                  <Skeleton className="h-4 w-3/4 mx-auto" />
+                  <Skeleton className="h-3 w-1/2 mx-auto" />
+                  <Skeleton className="h-20 w-full" />
+                </div>
+              </div>
+            ))
+          ) : (
+            teamMembers.map((member, index) => (
+              <TeamMemberCard key={member.id} member={member} index={index} />
+            ))
+          )}
         </div>
       </section>
 
@@ -366,5 +416,3 @@ export default function AboutPage() {
     </div>
   )
 }
-
-export const runtime = 'edge';

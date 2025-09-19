@@ -11,6 +11,30 @@ export interface Event {
   duration?: string;
   maxParticipants?: number;
   organizer?: string;
+  learningObjectives?: string[];
+  targetAudience?: string;
+  requirements?: string[];
+}
+
+// Database types (matching Supabase schema)
+export interface DatabaseEvent {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  end_date: string | null;
+  location: string;
+  max_participants: number | null;
+  current_participants: number;
+  tags: string[];
+  image_url: string;
+  registration_url: string | null;
+  is_featured: boolean;
+  learning_objectives: string[];
+  target_audience: string | null;
+  requirements: string[];
+  created_at: string;
+  updated_at: string;
 }
 
 export interface PastEvent {
@@ -36,6 +60,22 @@ export interface Project {
   featured: boolean;
 }
 
+// Database types (matching Supabase schema)
+export interface DatabaseProject {
+  id: string;
+  title: string;
+  description: string;
+  image_url: string;
+  github_url: string | null;
+  demo_url: string | null;
+  technologies: string[];
+  team_members: string[];
+  status: 'active' | 'completed' | 'archived';
+  is_featured: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -49,6 +89,30 @@ export interface TeamMember {
     email?: string;
   };
   position: number;
+}
+
+// Database types (matching Supabase schema)
+export interface DatabaseTeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  image_url: string;
+  github_url: string | null;
+  linkedin_url: string | null;
+  twitter_url: string | null;
+  email: string | null;
+  is_leadership: boolean;
+  order_index: number | null;
+  created_at: string;
+}
+
+export interface DatabaseContactSubmission {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  created_at: string;
 }
 
 export interface BlogPost {
