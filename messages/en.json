@@ -94,7 +94,7 @@
     "title": "About DSC Darmstadt",
     "mission": {
       "title": "Our Mission",
-      "description": "Developer Student Club Darmstadt is a vibrant community at TU Darmstadt. We bridge the gap between academic learning and industry practice through hands-on projects, hackathons, and collaborative events with leading technology companies."
+      "description": "Developer Student Club Darmstadt is a vibrant and open community at TU Darmstadt. Officially accredited in early 2025, we're excited to bring you hands-on projects, hackathons, and events with leading tech companies."
     },
     "goals": {
       "title": "What We Do",
@@ -104,7 +104,7 @@
           "description": "Building meaningful relationships between students and tech industry professionals through mentorship programs and networking events."
         },
         "skills": {
-          "title": "Develop practical skills through workshops and coding sessions",
+          "title": "Develop practical skills through workshops & coding sessions",
           "description": "Providing hands-on coding experiences, technical workshops, and project-based learning opportunities to enhance practical skills."
         },
         "community": {
@@ -175,7 +175,7 @@
       "connect": "Connect",
       "legal": "Legal"
     },
-    "copyright": "© 2025 Developer Student Club Darmstadt. All rights reserved."
+    "copyright": "© 2025 Developer Student Club Darmstadt. Built with ❤"
   },
   "notFound": {
     "title": "Page Not Found",
