@@ -1,13 +1,13 @@
 # Developer Student Club Darmstadt Website
 
-A modern, professional website for the Developer Student Club at TU Darmstadt, built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui components.
+A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, Tailwind CSS, next-intl, and shadcn/ui. Deployed on Cloudflare Pages using next-on-pages.
 
 ## ✨ Features
 
 ### 🌍 Multi-language Support
-- English and German translations
-- Dynamic locale switching
-- SEO-optimized URLs for each language
+- English and German
+- Dynamic locale toggle (Navbar)
+- SEO-friendly localized routes (`/[locale]/*`)
 
 ### 🌙 Theme Support
 - Light and dark mode
@@ -21,9 +21,8 @@ A modern, professional website for the Developer Student Club at TU Darmstadt, b
 
 ### 🎨 Modern UI/UX
 - shadcn/ui component library
-- Motion animations with motion-primitives
-- Consistent design system
-- Interactive hover effects
+- Framer Motion animations
+- Consistent design system & accessible primitives
 
 ### 🔍 SEO Optimized
 - Dynamic metadata generation
@@ -38,16 +37,16 @@ A modern, professional website for the Developer Student Club at TU Darmstadt, b
 - Screen reader optimized
 
 ### 📊 Performance
-- Next.js App Router with SSR/SSG
-- Optimized images and fonts
-- Code splitting and lazy loading
-- Loading states and error boundaries
+- Next.js App Router (SSR/SSG)
+- Optimized assets
+- Code splitting & lazy loading
+- Loading states & error boundaries
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js 18+
-- npm or yarn
+- npm
 
 ### Installation
 
@@ -63,17 +62,15 @@ A modern, professional website for the Developer Student Club at TU Darmstadt, b
    ```
 
 3. **Set up environment variables**
-   ```bash
-   cp .env.example .env.local
-   ```
-
-   Configure the following variables:
+   Create `.env.local` at the project root and add:
    ```env
    NEXT_PUBLIC_BASE_URL=http://localhost:3000
-   GOOGLE_VERIFICATION=your_google_verification_key
-   SUPABASE_URL=your_supabase_project_url
-   SUPABASE_ANON_KEY=your_supabase_anon_key
+   GOOGLE_VERIFICATION=your_google_verification_key # optional
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
+   Notes:
+   - These Supabase vars are required at runtime (`src/lib/supabase.ts`). If you don’t have a project yet, you may use placeholder values to boot the app, but calls to the API will fail.
 
 4. **Run the development server**
    ```bash
@@ -86,32 +83,43 @@ A modern, professional website for the Developer Student Club at TU Darmstadt, b
 ## 📁 Project Structure
 
 ```
+messages/                 # Localized copy (JSON): en.json, de.json
+public/                   # Static assets (icons, images, manifest)
+scripts/
+   └── populate-db.js      # Example Supabase seeding script (adjust before use)
 src/
-├── app/                    # Next.js App Router
-│   ├── [locale]/          # Internationalized routes
-│   │   ├── about/         # About page
-│   │   ├── events/        # Events listing and details
-│   │   ├── projects/      # Projects showcase
-│   │   └── page.tsx       # Home page
-│   ├── api/               # API routes
-│   │   ├── contact/       # Contact form submission
-│   │   └── events/        # Events API endpoints
-│   ├── globals.css        # Global styles
-│   └── layout.tsx         # Root layout
-├── components/            # Reusable components
-│   ├── ui/               # shadcn/ui components
-│   ├── layout/           # Layout components (Navbar, Footer)
-│   ├── home/             # Home page specific components
-│   ├── events/           # Event components
-│   ├── about/            # About page components
-│   └── accessibility/    # Accessibility components
-├── lib/                  # Utility functions and data
-│   ├── data/            # Static data and content
-│   ├── types/           # TypeScript type definitions
-│   ├── utils/           # Utility functions
-│   └── metadata.ts      # SEO metadata configuration
-├── i18n/                # Internationalization setup
-└── middleware.ts        # Next.js middleware for i18n
+   ├── app/
+   │  ├── [locale]/        # Localized routes
+   │  │  ├── about/
+   │  │  ├── events/
+   │  │  │  ├── [eventId]/
+   │  │  │  └── past/
+   │  │  ├── projects/
+   │  │  └── page.tsx      # Home
+   │  ├── api/
+   │  │  ├── contact/
+   │  │  ├── events/
+   │  │  │  └── [eventId]/
+   │  │  ├── projects/
+   │  │  │  └── [projectId]/
+   │  │  └── team/
+   │  │     └── [memberId]/
+   │  ├── globals.css
+   │  └── layout.tsx
+   ├── components/
+   │  ├── layout/          # Navbar, Footer
+   │  ├── home/
+   │  ├── events/
+   │  ├── about/
+   │  └── ui/              # shadcn/ui wrappers
+   ├── i18n/               # next-intl setup
+   ├── lib/
+   │  ├── data/            # Static fallback data
+   │  ├── types/
+   │  ├── utils/
+   │  ├── metadata.ts      # SEO helpers
+   │  └── supabase.ts      # Supabase client & DB types
+   └── middleware.ts       # Locale middleware
 ```
 
 ## 🌐 Pages
@@ -122,43 +130,76 @@ src/
 - Upcoming events preview
 - Featured projects showcase
 
-### Events Page (`/events`)
-- Tabbed interface for upcoming and past events
-- Event cards with registration links
-- Individual event detail pages
-- Filtering and search capabilities
+### Events Page (`/[locale]/events`)
+- Tabs: Upcoming / Past
+- Event cards with register/learn more
+- Event detail pages
 
-### Projects Page (`/projects`)
+### Projects Page (`/[locale]/projects`)
 - Project showcase with technology tags
 - GitHub and demo links
 - Team member information
 - Responsive grid layout
 
-### About Page (`/about`)
+### About Page (`/[locale]/about`)
 - Mission and goals explanation
 - Team member profiles
 - Values and culture information
 - Contact form integration
 
+### i18n Content
+- Copy lives in `messages/en.json` and `messages/de.json`.
+- Keep keys in sync across locales.
+- Locale middleware provides `en` and `de` routes.
+
 ## 🛠 Built With
 
 ### Frontend
-- **Next.js 15** - React framework with App Router
-- **TypeScript** - Type-safe JavaScript
-- **Tailwind CSS** - Utility-first CSS framework
-- **shadcn/ui** - Modern component library
-- **Motion** - Animation library
-- **next-intl** - Internationalization
+- **Next.js 14** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui**
+- **Framer Motion**
+- **next-intl**
 
 ### Backend (Ready for Integration)
-- **Supabase** - Backend as a Service (database, auth, storage)
-- **API Routes** - Next.js API endpoints
-- **Contact Form** - Email submission handling
+- **Supabase** (database, auth, storage)
+- **API Routes** (`/api/*`)
+- **Contact Form** (POST `/api/contact`)
 
 ### Development Tools
-- **ESLint** - Code linting
-- **Prettier** - Code formatting
-- **TypeScript** - Static type checking
+- **ESLint**
+- **TypeScript**
+
+## 🔌 API Endpoints (summary)
+
+- `GET /api/events` — list events
+- `GET /api/events/[eventId]` — event by id
+- `GET /api/projects` — list projects
+- `GET /api/projects/[projectId]` — project by id
+- `GET /api/team` — list team members
+- `GET /api/team/[memberId]` — team member by id
+- `POST /api/contact` — submit contact message
+
+## ☁️ Deploy (Cloudflare Pages)
+
+This project uses `@cloudflare/next-on-pages` to deploy Next.js to Cloudflare Pages.
+
+Scripts:
+
+```bash
+# Build for Cloudflare Pages
+npm run pages:build
+
+# Preview locally with Wrangler
+npm run preview
+
+# Deploy to Cloudflare Pages
+npm run deploy
+```
+
+Configuration:
+- `wrangler.jsonc` sets `pages_build_output_dir` to `.vercel/output/static` and enables `nodejs_compat`.
 
 ## 🤝 Contributing
 
@@ -167,6 +208,12 @@ src/
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+## 🧪 Troubleshooting
+
+- Dev server exits immediately (env): ensure `.env.local` contains `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+- i18n 404s: make sure you visit `http://localhost:3000/en` or `http://localhost:3000/de` or have locale detection enabled via `middleware.ts`.
+- Seeding data: the example `scripts/populate-db.js` assumes an ES module setup and a direct Supabase client import. Adjust paths/imports as needed before running, or insert sample rows via the Supabase dashboard.
 
 ## 📄 License
 
