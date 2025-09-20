@@ -42,7 +42,8 @@
         "description": "Explore highlights from past hackathons, workshops, and meetups."
       },
       "viewAll": "View All Events",
-      "noUpcomingEvents": "No upcoming events at the moment. Stay tuned! 😊"
+      "noUpcomingEvents": "No upcoming events at the moment. Stay tuned! 😊",
+      "noPastEvents": "Oh Oh, no past events to display. 🤔"
     },
     "projects": {
       "featured": {

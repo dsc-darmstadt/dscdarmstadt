@@ -145,7 +145,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           ) : (
             <div className="text-center py-12">
               <p className="text-muted-foreground">
-                {t('events.noUpcomingEvents')}
+                {t('events.noPastEvents')}
               </p>
             </div>
           )}
