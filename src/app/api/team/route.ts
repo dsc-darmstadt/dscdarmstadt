@@ -8,16 +8,16 @@ export async function GET(request: NextRequest) {
   try {
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
-    
+
     // Check for leadership filter
     const { searchParams } = new URL(request.url);
     const leadershipParam = searchParams.get('leadership');
-    
+
     let query = supabase
       .from('team_members')
       .select('*')
       .order('order_index', { ascending: true, nullsFirst: false });
-    
+
     // Add leadership filter if requested
     if (leadershipParam === 'true') {
       query = query.eq('is_leadership', true);

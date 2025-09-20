@@ -395,7 +395,7 @@ export default function AboutClient({ locale }: AboutClientProps) {
 
           <div className="flex justify-center space-x-6">
             <a
-              href="https://github.com/dsc-darmstadt"
+              href="https://github.com/adham-elaraby/dscd-website-experimental"
               className="text-muted-foreground hover:text-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
@@ -404,7 +404,7 @@ export default function AboutClient({ locale }: AboutClientProps) {
               <span className="sr-only">GitHub</span>
             </a>
             <a
-              href="https://linkedin.com/company/dsc-darmstadt"
+              href="https://www.linkedin.com/company/dsc-tu-darmstadt/"
               className="text-muted-foreground hover:text-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
@@ -412,7 +412,7 @@ export default function AboutClient({ locale }: AboutClientProps) {
               <Linkedin className="h-6 w-6" />
               <span className="sr-only">LinkedIn</span>
             </a>
-            <a
+            {/* <a
               href="https://twitter.com/dsc_darmstadt"
               className="text-muted-foreground hover:text-foreground transition-colors"
               target="_blank"
@@ -420,7 +420,7 @@ export default function AboutClient({ locale }: AboutClientProps) {
             >
               <Twitter className="h-6 w-6" />
               <span className="sr-only">Twitter</span>
-            </a>
+            </a> */}
           </div>
         </motion.div>
       </section>
