@@ -18,7 +18,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
   const t = await getTranslations('events')
 
   // Find the event by ID
-  const allEvents = getAllEvents()
+  const allEvents = await getAllEvents()
   const event = allEvents.find(e => e.id === eventId)
 
   if (!event) {
