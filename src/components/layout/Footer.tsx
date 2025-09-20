@@ -37,7 +37,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  {navT('projects (soon!)')}
+                  {navT('projects') + '(soon!)'}
                 </Link>
               </li>
               <li>
