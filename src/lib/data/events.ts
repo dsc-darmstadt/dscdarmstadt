@@ -7,6 +7,11 @@ function getBaseUrl() {
     return '';
   }
 
+  // Check for Cloudflare Pages environment
+  if (process.env.CF_PAGES_URL) {
+    return process.env.CF_PAGES_URL;
+  }
+
   if (process.env.VERCEL_URL) {
     // Reference for vercel.com
     return `https://${process.env.VERCEL_URL}`;
@@ -17,8 +22,13 @@ function getBaseUrl() {
     return 'http://localhost:3000';
   }
 
-  // Production fallback
-  return 'https://yourdomain.com'; // Replace with your actual domain
+  // Production fallback - try to determine from global env
+  if (typeof globalThis !== 'undefined' && globalThis.location) {
+    return `${globalThis.location.protocol}//${globalThis.location.host}`;
+  }
+
+  // Last resort - use current deployment URL
+  return 'https://testing.dscd-website-experimental.pages.dev';
 }
 
 // Fetch events from API
