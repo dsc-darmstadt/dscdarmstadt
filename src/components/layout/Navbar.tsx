@@ -19,7 +19,9 @@ export function Navbar() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background supports-[backdrop-filter]:bg-background/95 supports-[backdrop-filter]:backdrop-blur">
+      {/* Safe area padding for mobile notch/dynamic island */}
+      <div className="h-[env(safe-area-inset-top)] bg-background"></div>
       <div className="container relative flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <Code className="h-6 w-6" />
