@@ -5,12 +5,12 @@ export async function getProjects(): Promise<Project[]> {
   try {
     const response = await fetch('/api/projects');
     const result = await response.json();
-    
+
     if (!result.success) {
       console.error('Failed to fetch projects:', result.error);
       return [];
     }
-    
+
     return result.data;
   } catch (error) {
     console.error('Error fetching projects:', error);
@@ -45,12 +45,12 @@ export async function getProjectById(id: string): Promise<Project | null> {
   try {
     const response = await fetch(`/api/projects/${id}`);
     const result = await response.json();
-    
+
     if (!result.success) {
       console.error('Failed to fetch project:', result.error);
       return null;
     }
-    
+
     return result.data;
   } catch (error) {
     console.error('Error fetching project:', error);

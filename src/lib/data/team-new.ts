@@ -6,12 +6,12 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000'
     const response = await fetch(`${baseUrl}/api/team`)
     const result = await response.json()
-    
+
     if (!result.success) {
       console.error('Failed to fetch team members:', result.error)
       return []
     }
-    
+
     return result.data
   } catch (error) {
     console.error('Error fetching team members:', error)
@@ -23,8 +23,8 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
 export async function getLeadershipMembers(): Promise<TeamMember[]> {
   const teamMembers = await getTeamMembers();
   // In the database, we use is_leadership field, but in frontend we can filter by role or position
-  return teamMembers.filter(member => 
-    member.role.toLowerCase().includes('president') || 
+  return teamMembers.filter(member =>
+    member.role.toLowerCase().includes('president') ||
     member.role.toLowerCase().includes('lead') ||
     member.role.toLowerCase().includes('director')
   );
@@ -33,7 +33,7 @@ export async function getLeadershipMembers(): Promise<TeamMember[]> {
 // Get team members by role
 export async function getTeamMembersByRole(role: string): Promise<TeamMember[]> {
   const teamMembers = await getTeamMembers();
-  return teamMembers.filter(member => 
+  return teamMembers.filter(member =>
     member.role.toLowerCase().includes(role.toLowerCase())
   );
 }
@@ -44,12 +44,12 @@ export async function getTeamMemberById(id: string): Promise<TeamMember | null> 
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000'
     const response = await fetch(`${baseUrl}/api/team/${id}`);
     const result = await response.json();
-    
+
     if (!result.success) {
       console.error('Failed to fetch team member:', result.error);
       return null;
     }
-    
+
     return result.data;
   } catch (error) {
     console.error('Error fetching team member:', error);

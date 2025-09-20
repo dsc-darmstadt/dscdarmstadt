@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { UpcomingEvents } from '@/components/home/UpcomingEvents'
+import { UpcomingEventsSection } from '@/components/home/UpcomingEventsSection'
 import { PastEvents } from '@/components/home/PastEvents'
 import { FeaturedProjects } from '@/components/home/FeaturedProjects'
 import {
@@ -11,7 +11,7 @@ import {
   AnimatedSection,
   AnimatedCard
 } from '@/components/home/HomeAnimatedWrapper'
-import { getUpcomingEvents, getPastEvents } from '@/lib/data/events'
+import { getPastEvents } from '@/lib/data/events'
 import { getFeaturedProjects } from '@/lib/data/projects'
 import { ArrowRight, Code, Users, Lightbulb, Target } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -23,9 +23,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   console.log('Home page locale:', locale);
 
   const t = await getTranslations({ locale, namespace: 'home' });
-  console.log('Translation test:', t('hero.title'));
 
-  const upcomingEvents = await getUpcomingEvents(3)
   const pastEvents = await getPastEvents(3)
   const featuredProjects = getFeaturedProjects(3)
 
@@ -120,35 +118,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="py-20">
-        <div className="container">
-          <AnimatedSection className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">{t('events.upcoming.title')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t('events.upcoming.description')}
-            </p>
-          </AnimatedSection>
-
-          {upcomingEvents.length > 0 ? (
-            <>
-              <UpcomingEvents events={upcomingEvents} />
-              <AnimatedSection delay={0.3} className="mt-12 flex justify-center">
-                <Button asChild>
-                  <Link href="/events">
-                    {t('events.viewAll')}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </AnimatedSection>
-            </>          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                {t('events.noUpcomingEvents')}
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
+      <UpcomingEventsSection />
 
       {/* Past Events Section */}
       <section className="py-20">
@@ -183,7 +153,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
 
-      {/* Featured Projects Section 
+      {/* Featured Projects Section
       <section className="py-20 bg-muted/30">
         <div className="container">
           <AnimatedSection className="text-center space-y-4 mb-12">

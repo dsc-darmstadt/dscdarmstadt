@@ -100,17 +100,17 @@ export default function EventsClient({ locale }: EventsClientProps) {
         setLoading(true)
         const response = await fetch('/api/events')
         const result = await response.json()
-        
+
         if (!result.success) {
           throw new Error(result.error || 'Failed to fetch events')
         }
-        
+
         // Filter upcoming events on client side
         const now = new Date()
         const upcoming = result.data
           .filter((event: Event) => new Date(event.date) >= now)
           .sort((a: Event, b: Event) => new Date(a.date).getTime() - new Date(b.date).getTime())
-        
+
         setUpcomingEvents(upcoming)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error')
@@ -139,8 +139,8 @@ export default function EventsClient({ locale }: EventsClientProps) {
       <div className="container py-20">
         <div className="text-center">
           <p className="text-red-500">Error: {error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="mt-4 px-4 py-2 bg-primary text-white rounded"
           >
             Retry
@@ -148,7 +148,7 @@ export default function EventsClient({ locale }: EventsClientProps) {
         </div>
       </div>
     )
-  }     
+  }
 
   return (
     <div className="container py-20">
@@ -198,7 +198,7 @@ export default function EventsClient({ locale }: EventsClientProps) {
                 </p>
               </motion.div>
             )}
-          </TabsContent> 
+          </TabsContent>
         </Tabs>
       </motion.div>
     </div>

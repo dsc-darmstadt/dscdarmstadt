@@ -6,17 +6,17 @@ function getBaseUrl() {
     // Browser should use relative path
     return '';
   }
-  
+
   if (process.env.VERCEL_URL) {
     // Reference for vercel.com
     return `https://${process.env.VERCEL_URL}`;
   }
-  
+
   if (process.env.NODE_ENV === 'development') {
     // Development
     return 'http://localhost:3000';
   }
-  
+
   // Production fallback
   return 'https://yourdomain.com'; // Replace with your actual domain
 }
@@ -27,12 +27,12 @@ export async function getEvents(): Promise<Event[]> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/api/events`);
     const result = await response.json();
-    
+
     if (!result.success) {
       console.error('Failed to fetch events:', result.error);
       return [];
     }
-    
+
     return result.data;
   } catch (error) {
     console.error('Error fetching events:', error);
@@ -63,7 +63,7 @@ export async function getPastEvents(limit?: number): Promise<Event[]> {
 // Get featured events
 export async function getFeaturedEvents(): Promise<Event[]> {
   const events = await getEvents();
-  return events.filter(event => event.tags?.includes('featured') || false);
+  return events.filter(event => event.is_featured === true);
 }
 
 // Get single event by ID
@@ -72,12 +72,12 @@ export async function getEventById(id: string): Promise<Event | null> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/api/events/${id}`);
     const result = await response.json();
-    
+
     if (!result.success) {
       console.error('Failed to fetch event:', result.error);
       return null;
     }
-    
+
     return result.data;
   } catch (error) {
     console.error('Error fetching event:', error);

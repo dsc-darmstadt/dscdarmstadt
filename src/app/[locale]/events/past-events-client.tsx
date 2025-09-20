@@ -75,17 +75,17 @@ export default function PastEventsClient({ locale }: PastEventsClientProps) {
         setLoading(true)
         const response = await fetch('/api/events')
         const result = await response.json()
-        
+
         if (!result.success) {
           throw new Error(result.error || 'Failed to fetch events')
         }
-        
+
         // Filter past events on client side
         const now = new Date()
         const pastEvents = result.data
           .filter((event: Event) => new Date(event.date) < now)
           .sort((a: Event, b: Event) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        
+
         setEvents(pastEvents)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error')
@@ -114,8 +114,8 @@ export default function PastEventsClient({ locale }: PastEventsClientProps) {
       <div className="container py-20">
         <div className="text-center">
           <p className="text-red-500">Error: {error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="mt-4 px-4 py-2 bg-primary text-white rounded"
           >
             Retry

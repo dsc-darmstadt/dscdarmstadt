@@ -16,7 +16,8 @@ export function dbEventToEvent(dbEvent: DatabaseEvent): Event {
     organizer: 'DSC Darmstadt',
     learningObjectives: dbEvent.learning_objectives || [],
     targetAudience: dbEvent.target_audience || undefined,
-    requirements: dbEvent.requirements || []
+    requirements: dbEvent.requirements || [],
+    is_featured: dbEvent.is_featured
   };
 }
 
@@ -33,7 +34,8 @@ export function eventToDbEvent(event: Partial<Event>): Partial<DatabaseEvent> {
     max_participants: event.maxParticipants || null,
     learning_objectives: event.learningObjectives || [],
     target_audience: event.targetAudience || null,
-    requirements: event.requirements || []
+    requirements: event.requirements || [],
+    is_featured: event.is_featured || false
   };
 }
 

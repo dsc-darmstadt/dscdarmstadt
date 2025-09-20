@@ -14,6 +14,7 @@ export interface Event {
   learningObjectives?: string[];
   targetAudience?: string;
   requirements?: string[];
+  is_featured?: boolean;
 }
 
 // Database types (matching Supabase schema)
