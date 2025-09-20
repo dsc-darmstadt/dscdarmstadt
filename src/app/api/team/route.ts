@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createSupabaseClient } from '@/lib/supabase';
 import { dbTeamMemberToTeamMember, teamMemberToDbTeamMember } from '@/lib/utils/converters';
 
 export const runtime = 'edge';
 
 export async function GET() {
   try {
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
+    
     const { data: teamMembers, error } = await supabase
       .from('team_members')
       .select('*')
@@ -58,6 +61,9 @@ export async function POST(request: NextRequest) {
 
     // Convert frontend team member to database format
     const dbTeamMember = teamMemberToDbTeamMember(body);
+
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
 
     const { data, error } = await supabase
       .from('team_members')

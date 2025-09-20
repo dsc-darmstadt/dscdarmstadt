@@ -1,9 +1,49 @@
 import { createClient } from '@supabase/supabase-js'
+import { getSupabaseConfig, type CloudflareEnv } from './env'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Lazy-loaded client for client-side usage only
+let _supabase: ReturnType<typeof createClient> | null = null
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+function getSupabaseClient() {
+  if (!_supabase) {
+    const config = getSupabaseConfig()
+    _supabase = createClient(config.url, config.anonKey)
+  }
+  return _supabase
+}
+
+// Export only for client-side components - do not use in API routes
+export const supabase = new Proxy({} as ReturnType<typeof createClient>, {
+  get(target, prop) {
+    const client = getSupabaseClient()
+    return (client as any)[prop]
+  }
+})
+
+// Use this function in API routes instead of importing supabase
+export function createSupabaseClient(cloudflareEnv?: CloudflareEnv) {
+  // Always use direct environment variable access for API routes
+  const supabaseUrl = cloudflareEnv?.NEXT_PUBLIC_SUPABASE_URL || 
+                     cloudflareEnv?.SUPABASE_URL ||
+                     process.env.NEXT_PUBLIC_SUPABASE_URL || 
+                     process.env.SUPABASE_URL
+                     
+  const supabaseAnonKey = cloudflareEnv?.NEXT_PUBLIC_SUPABASE_ANON_KEY || 
+                         cloudflareEnv?.SUPABASE_ANON_KEY ||
+                         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 
+                         process.env.SUPABASE_ANON_KEY
+  
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error(
+      'Missing Supabase environment variables. Please set:\n' +
+      '- NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY (for client-side)\n' +
+      '- Or SUPABASE_URL and SUPABASE_ANON_KEY (for server-side)\n' +
+      'In Cloudflare Pages, add these as environment variables in your dashboard.'
+    )
+  }
+  
+  return createClient(supabaseUrl, supabaseAnonKey)
+}
 
 // Database types
 export type Database = {

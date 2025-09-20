@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createSupabaseClient } from '@/lib/supabase';
 import { dbEventToEvent, eventToDbEvent } from '@/lib/utils/converters';
 
 export const runtime = 'edge';
@@ -11,6 +11,9 @@ interface RouteParams {
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
     const { eventId } = params;
+
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
 
     const { data: event, error } = await supabase
       .from('events')
@@ -62,6 +65,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     const dbEvent = eventToDbEvent(body);
     dbEvent.updated_at = new Date().toISOString();
 
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
+
     const { data, error } = await supabase
       .from('events')
       .update(dbEvent)
@@ -107,6 +113,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
     const { eventId } = params;
+
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
 
     const { error } = await supabase
       .from('events')

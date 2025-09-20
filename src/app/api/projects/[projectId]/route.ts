@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createSupabaseClient } from '@/lib/supabase';
 import { dbProjectToProject, projectToDbProject } from '@/lib/utils/converters';
 
 export const runtime = 'edge';
@@ -11,6 +11,9 @@ interface RouteParams {
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
     const { projectId } = params;
+
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
 
     const { data: project, error } = await supabase
       .from('projects')
@@ -62,6 +65,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     const dbProject = projectToDbProject(body);
     dbProject.updated_at = new Date().toISOString();
 
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
+
     const { data, error } = await supabase
       .from('projects')
       .update(dbProject)
@@ -107,6 +113,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
     const { projectId } = params;
+
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
 
     const { error } = await supabase
       .from('projects')

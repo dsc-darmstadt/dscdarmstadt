@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createSupabaseClient } from '@/lib/supabase';
 import { dbTeamMemberToTeamMember, teamMemberToDbTeamMember } from '@/lib/utils/converters';
 
 export const runtime = 'edge';
@@ -11,6 +11,9 @@ interface RouteParams {
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
     const { memberId } = params;
+
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
 
     const { data: teamMember, error } = await supabase
       .from('team_members')
@@ -61,6 +64,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     // Convert frontend team member to database format
     const dbTeamMember = teamMemberToDbTeamMember(body);
 
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
+
     const { data, error } = await supabase
       .from('team_members')
       .update(dbTeamMember)
@@ -106,6 +112,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
     const { memberId } = params;
+
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
 
     const { error } = await supabase
       .from('team_members')

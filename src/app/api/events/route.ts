@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createSupabaseClient } from '@/lib/supabase';
 import { dbEventToEvent, eventToDbEvent } from '@/lib/utils/converters';
 
 export const runtime = 'edge';
 
 export async function GET() {
   try {
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
+    
     const { data: events, error } = await supabase
       .from('events')
       .select('*')
@@ -58,6 +61,9 @@ export async function POST(request: NextRequest) {
 
     // Convert frontend event to database format
     const dbEvent = eventToDbEvent(body);
+
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
 
     const { data, error } = await supabase
       .from('events')

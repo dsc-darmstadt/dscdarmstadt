@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createSupabaseClient } from '@/lib/supabase';
 
 export const runtime = 'edge';
 
@@ -34,6 +34,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Save to Supabase
+    // Create Supabase client that works with Cloudflare env bindings
+    const supabase = createSupabaseClient();
+    
     const { data, error } = await supabase
       .from('contact_submissions')
       .insert({
