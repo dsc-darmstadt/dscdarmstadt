@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/theme-toggle'
 import { LanguageToggle } from '@/components/language-toggle'
 import { Menu, X, Code } from 'lucide-react'
 
@@ -42,13 +41,11 @@ export function Navbar() {
 
         {/* Desktop Controls */}
         <div className="hidden md:flex items-center gap-2">
-          <ThemeToggle />
           <LanguageToggle />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
           <LanguageToggle />
           <Button
             variant="ghost"
