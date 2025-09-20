@@ -4,15 +4,26 @@ import { dbTeamMemberToTeamMember, teamMemberToDbTeamMember } from '@/lib/utils/
 
 export const runtime = 'edge';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
     
-    const { data: teamMembers, error } = await supabase
+    // Check for leadership filter
+    const { searchParams } = new URL(request.url);
+    const isLeadership = searchParams.get('leadership') === 'true';
+    
+    let query = supabase
       .from('team_members')
       .select('*')
       .order('order_index', { ascending: true, nullsFirst: false });
+    
+    // Add leadership filter if requested
+    if (isLeadership) {
+      query = query.eq('is_leadership', true);
+    }
+
+    const { data: teamMembers, error } = await query;
 
     if (error) {
       console.error('Supabase error:', error);
@@ -25,7 +36,7 @@ export async function GET() {
     return NextResponse.json({
       success: true,
       data: convertedTeamMembers,
-      message: 'Team members fetched successfully'
+      message: `${isLeadership ? 'Leadership team' : 'Team members'} fetched successfully`
     });
   } catch (error) {
     console.error('Error fetching team members:', error);
