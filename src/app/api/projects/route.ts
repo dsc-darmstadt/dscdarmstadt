@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseClient } from '@/lib/supabase';
-import { dbEventToEvent, eventToDbEvent } from '@/lib/utils/converters';
+import { dbProjectToProject, projectToDbProject } from '@/lib/utils/converters';
 
 export const runtime = 'edge';
 
@@ -9,30 +9,30 @@ export async function GET() {
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
     
-    const { data: events, error } = await supabase
-      .from('events')
+    const { data: projects, error } = await supabase
+      .from('projects')
       .select('*')
-      .order('date', { ascending: true });
+      .order('created_at', { ascending: false });
 
     if (error) {
       console.error('Supabase error:', error);
       throw error;
     }
 
-    // Convert database events to frontend format
-    const convertedEvents = events.map(dbEventToEvent);
+    // Convert database projects to frontend format
+    const convertedProjects = projects.map(dbProjectToProject);
 
     return NextResponse.json({
       success: true,
-      data: convertedEvents,
-      message: 'Events fetched successfully'
+      data: convertedProjects,
+      message: 'Projects fetched successfully'
     });
   } catch (error) {
-    console.error('Error fetching events:', error);
+    console.error('Error fetching projects:', error);
     return NextResponse.json(
       {
         success: false,
-        error: 'Failed to fetch events',
+        error: 'Failed to fetch projects',
         message: 'Internal server error'
       },
       { status: 500 }
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Validate required fields
-    const requiredFields = ['title', 'description', 'date', 'location', 'imageUrl'];
+    const requiredFields = ['title', 'description', 'imageUrl', 'technologies'];
     for (const field of requiredFields) {
       if (!body[field]) {
         return NextResponse.json(
@@ -59,15 +59,15 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Convert frontend event to database format
-    const dbEvent = eventToDbEvent(body);
+    // Convert frontend project to database format
+    const dbProject = projectToDbProject(body);
 
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
 
     const { data, error } = await supabase
-      .from('events')
-      .insert(dbEvent)
+      .from('projects')
+      .insert(dbProject)
       .select()
       .single();
 
@@ -77,19 +77,19 @@ export async function POST(request: NextRequest) {
     }
 
     // Convert back to frontend format
-    const newEvent = dbEventToEvent(data);
+    const newProject = dbProjectToProject(data);
 
     return NextResponse.json({
       success: true,
-      data: newEvent,
-      message: 'Event created successfully'
+      data: newProject,
+      message: 'Project created successfully'
     }, { status: 201 });
   } catch (error) {
-    console.error('Error creating event:', error);
+    console.error('Error creating project:', error);
     return NextResponse.json(
       {
         success: false,
-        error: 'Failed to create event',
+        error: 'Failed to create project',
         message: 'Internal server error'
       },
       { status: 500 }

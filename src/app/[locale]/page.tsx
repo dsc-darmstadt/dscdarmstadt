@@ -1,9 +1,8 @@
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { UpcomingEvents } from '@/components/home/UpcomingEvents'
-import { PastEvents } from '@/components/home/PastEvents'
-import { FeaturedProjects } from '@/components/home/FeaturedProjects'
+import { UpcomingEventsSection } from '@/components/home/UpcomingEventsSection'
+import { DynamicHomeContent } from '@/components/home/DynamicHomeContent'
 import {
   AnimatedHeroSection,
   AnimatedHeroButtons,
@@ -11,8 +10,6 @@ import {
   AnimatedSection,
   AnimatedCard
 } from '@/components/home/HomeAnimatedWrapper'
-import { getUpcomingEvents, getPastEvents, getFeaturedEvents } from '@/lib/data/events'
-import { getFeaturedProjects } from '@/lib/data/projects'
 import { ArrowRight, Code, Users, Lightbulb, Target } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -23,11 +20,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   console.log('Home page locale:', locale);
 
   const t = await getTranslations({ locale, namespace: 'home' });
-  console.log('Translation test:', t('hero.title'));
-
-  const upcomingEvents = getUpcomingEvents(3)
-  const pastEvents = getPastEvents(3)
-  const featuredProjects = getFeaturedProjects(3)
 
   const values = [
     {
@@ -120,91 +112,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="py-20">
-        <div className="container">
-          <AnimatedSection className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">{t('events.upcoming.title')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t('events.upcoming.description')}
-            </p>
-          </AnimatedSection>
+      <UpcomingEventsSection />
 
-          {upcomingEvents.length > 0 ? (
-            <>
-              <UpcomingEvents events={upcomingEvents} />
-              <AnimatedSection delay={0.3} className="mt-12 flex justify-center">
-                <Button asChild>
-                  <Link href="/events">
-                    {t('events.viewAll')}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </AnimatedSection>
-            </>          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                {t('events.noUpcomingEvents')}
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Past Events Section */}
-      <section className="py-20">
-        <div className="container">
-          <AnimatedSection className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">{t('events.past.title')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t('events.past.description')}
-            </p>
-          </AnimatedSection>
-
-          {pastEvents.length > 0 ? (
-            <>
-              <PastEvents events={pastEvents} />
-              <AnimatedSection delay={0.3} className="mt-12 flex justify-center">
-                <Button asChild>
-                  <Link href="/events/past">
-                    {t('events.viewAll')}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </AnimatedSection>
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                {t('events.noUpcomingEvents')}
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-
-      {/* Featured Projects Section 
-      <section className="py-20 bg-muted/30">
-        <div className="container">
-          <AnimatedSection className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">{t('projects.featured.title')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t('projects.featured.description')}
-            </p>
-          </AnimatedSection>
-
-          <FeaturedProjects projects={featuredProjects} />
-
-          <AnimatedSection delay={0.3} className="mt-12 flex justify-center">
-            <Button asChild>
-              <Link href="/projects">
-                {t('projects.viewAll')}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </AnimatedSection>
-        </div>
-      </section> */}
+      {/* Dynamic Content (Past Events & Featured Projects) */}
+      <DynamicHomeContent />
     </div>
   )
 }

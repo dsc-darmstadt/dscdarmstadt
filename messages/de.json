@@ -1,67 +1,70 @@
 {
   "navigation": {
     "home": "Startseite",
-    "events": "Veranstaltungen",
+    "events": "Events",
     "projects": "Projekte",
     "about": "Über uns"
   },
-  "home": {    "hero": {
+  "home": {
+    "hero": {
       "title": "Developer Student Club Darmstadt",
-      "subtitle": "Die Brücke zwischen Theorie und Praxis durch Innovation und Zusammenarbeit",
-      "description": "Gemeinsam wachsen, lernen und gestalten – im Developer Student Club der TU Darmstadt verbinden wir Studierende mit der Tech-Welt und schaffen Raum für Ideen, Innovation und Zusammenarbeit.",
-      "tagline": "Innovative Lösungen gemeinsam entwickeln",
+      "subtitle": "Wir verbinden Studierende und Industrie – mit Innovation, Zusammenarbeit und Support",
+      "description": "Werde Teil der Developer‑Community der TU Darmstadt: vernetze dich mit führenden Unternehmen, nimm an Hackathons teil und gestalte Technologie mit.",
+      "tagline": "Gemeinsam innovative Lösungen bauen",
       "cta": {
         "events": "Events entdecken",
         "about": "Mehr erfahren"
       }
     },
     "about": {
-      "title": "Was ist der DSC Darmstadt?",
-      "mission": "Wir sind eine studentische Initiative an der TU Darmstadt, die technikbegeisterte Studierende miteinander und mit der Industrie vernetzt. Ziel ist es, praxisorientiertes Lernen, Innovation und Zusammenarbeit zu fördern. Durch Workshops, Hackathons und Networking-Events bieten wir eine Plattform, um Fähigkeiten zu entwickeln, Ideen auszutauschen und gemeinsam an Projekten zu arbeiten.",
+      "title": "Was ist DSC Darmstadt?",
+      "mission": "Wir sind eine studentische Community für Technologie und Innovation. Wir vernetzen Studierende untereinander und mit der Industrie, bieten praxisnahe Lernmöglichkeiten und schaffen ein Umfeld, in dem Nachwuchs‑Entwickler wachsen.",
       "values": {
         "innovation": {
           "title": "Innovation",
-          "description": "Grenzen überschreiten und modernste Technologien erforschen"
+          "description": "Grenzen verschieben und neue Felder erkunden."
         },
         "collaboration": {
           "title": "Zusammenarbeit",
-          "description": "Studierende miteinander und mit der Industrie vernetzen – für nachhaltige Zusammenarbeit und gemeinsamen Erfolg"
+          "description": "Starke Partnerschaften zwischen Studierenden und Industrie."
         },
         "growth": {
           "title": "Wachstum",
-          "description": "Kontinuierliches Lernen und berufliche Entwicklung"
+          "description": "Kontinuierliches Lernen und Entwicklung."
         }
       }
-    },    "events": {
+    },
+    "events": {
       "upcoming": {
         "title": "Kommende Events",
-        "description": "Verpasse nicht unsere neuesten Hackathons, Workshops und Networking-Events"
+        "description": "Verpasse keine Hackathons, Workshops und Networking‑Events."
       },
       "past": {
         "title": "Vergangene Events",
-        "description": "Entdecke Highlights vergangener Hackathons, Workshops und Meetups."
+        "description": "Highlights vergangener Hackathons, Workshops und Meetups."
       },
       "viewAll": "Alle Events anzeigen",
-      "noUpcomingEvents": "Momentan keine anstehenden Events. Bleibt dran!"
+      "noUpcomingEvents": "Momentan keine anstehenden Events. Bleib dran! 😊"
     },
     "projects": {
       "featured": {
         "title": "Ausgewählte Projekte",
-        "description": "Entdecke innovative Lösungen unserer Gemeinschaft"
+        "description": "Schau, woran unsere Community arbeitet! 🤩"
       },
       "viewAll": "Alle Projekte anzeigen"
     }
   },
   "events": {
     "title": "Veranstaltungen",
-    "description": "Nimm teil an spannenden Hackathons, technischen Workshops und Networking-Gelegenheiten mit Branchenführern.",
+    "description": "Nimm teil an Hackathons, Workshops und Networking mit Branchenführern.",
     "tabs": {
       "upcoming": "Kommende Events",
       "past": "Vergangene Events"
     },
-    "noUpcomingEvents": "Momentan sind keine Events geplant. Bleib dran für spannende Ankündigungen!",
+    "noUpcomingEvents": "Momentan keine Events. Spannende Ankündigungen folgen! 🤩",
     "register": "Jetzt anmelden",
-    "learnMore": "Mehr erfahren",    "details": {
+    "learnMore": "Mehr erfahren",
+    "details": {
       "date": "Datum",
       "time": "Zeit",
       "location": "Ort",
@@ -70,20 +73,21 @@
       "tags": "Tags"
     },
     "backToEvents": "Zurück zu Events",
-    "eventDetails": "Event-Details",
+    "eventDetails": "Event‑Details",
     "about": "Über dieses Event",
-    "whatYoullLearn": "Was du lernst",
-    "whoShouldAttend": "Für wen ist es geeignet",
-    "joinEvent": "An diesem Event teilnehmen",
-    "registerNow": "Jetzt anmelden und deinen Platz sichern!",
+    "whatYoullLearn": "Das lernst du",
+    "whoShouldAttend": "Für wen",
+    "joinEvent": "Am Event teilnehmen",
+    "registerNow": "Jetzt anmelden und Platz sichern!",
     "registrationClosed": "Anmeldung geschlossen",
     "topics": "Themen",
     "requirements": "Voraussetzungen",
-    "type": "Typ"
+    "type": "Typ",
+    "unlimited": "Unbegrenzt"
   },
   "projects": {
     "title": "Projekte",
-    "description": "Erkunde innovative Projekte unserer Community-Mitglieder und entdecke die Kraft der kollaborativen Entwicklung.",
+    "description": "Sieh dir an, woran unsere Community arbeitet.",
     "viewCode": "Code ansehen",
     "viewDemo": "Demo ansehen",
     "technologies": "Technologien",
@@ -93,40 +97,71 @@
     "title": "Über DSC Darmstadt",
     "mission": {
       "title": "Unsere Mission",
-      "intro": "Wir fördern technologische Neugier, Zusammenarbeit und persönliches Wachstum. Unsere Community bietet Raum für Austausch, gemeinsames Lernen und kreative Ideen. So schaffen wir ein Umfeld, in dem Studierende sich vernetzen, weiterentwickeln und aktiv Projekte mitgestalten.",
-      "description": "Wir sind eine studentische Initiative an der TU Darmstadt, die technikbegeisterte Studierende miteinander und mit der Industrie vernetzt. Ziel ist es, praxisorientiertes Lernen, Innovation und Zusammenarbeit zu fördern. Durch Workshops, Hackathons und Networking-Events bieten wir eine Plattform, um Fähigkeiten zu entwickeln, Ideen auszutauschen und gemeinsam an Projekten zu arbeiten."
+      "description": "Der Developer Student Club Darmstadt ist eine offene Community an der TU Darmstadt. Seit Anfang 2025 offiziell akkreditiert. Wir bringen praxisnahe Projekte, Hackathons und Events mit Top‑Tech‑Partnern."
     },
     "goals": {
       "title": "Was wir tun",
       "items": {
-        "connect": "Studierende miteinander und mit Fachleuten aus Industrie und Forschung vernetzen",
-        "skills": "Praktische Fähigkeiten durch Workshops und Coding-Sessions entwickeln",
-        "community": "Eine unterstützende Entwickler-Community aufbauen",
-        "opportunities": "Chancen für Praktika und berufliche Orientierung schaffen"
+        "connect": {
+          "title": "Studierende mit Branchenprofis und Mentoren vernetzen",
+          "description": "Wir schaffen Beziehungen zwischen Studierenden und Profis – durch Mentoring und Networking‑Events."
+        },
+        "skills": {
+          "title": "Praktische Fähigkeiten durch Workshops & Coding‑Sessions",
+          "description": "Hands‑on Coding, Workshops und projektbasiertes Lernen."
+        },
+        "community": {
+          "title": "Eine unterstützende Community für Entwickler*innen",
+          "description": "Ein offenes Umfeld, in dem alle lernen, zusammenarbeiten und wachsen."
+        },
+        "opportunities": {
+          "title": "Chancen für Praktika und Karriere",
+          "description": "Wir verbinden Studierende mit Praktika, Jobs und Karriereressourcen."
+        }
+      }
+    },
+    "values": {
+      "title": "Unsere Werte",
+      "description": "Das leitet unsere Arbeit bei DSC Darmstadt.",
+      "corevalues": {
+        "corevalue1": {
+          "title": "Teamwork",
+          "description": "Wir arbeiten zusammen und pushen uns gegenseitig."
+        },
+        "corevalue2": {
+          "title": "Inklusivität",
+          "description": "Alle Fachrichtungen und Levels sind willkommen – Hauptsache Lernlust."
+        },
+        "corevalue3": {
+          "title": "Transparenz",
+          "description": "Du sollst mitreden: Orga‑Meetings offen, Entscheidungen transparent auf Discord."
+        }
       }
     },
     "team": {
       "title": "Unser Team",
-      "description": "Das Team, das hinter DSC Darmstadt steht"
-    },    "contact": {
-      "title": "Kontakt aufnehmen",
-      "description": "Bereit, unserer Gemeinschaft beizutreten oder hast du Fragen? Wir freuen uns von dir zu hören!",
-      "email": "E-Mail senden",
-      "social": "Folge uns in den sozialen Medien",
-      "formTitle": "Schreib uns eine Nachricht",
-      "formDescription": "Du hast eine Frage oder möchtest mitmachen? Schreib uns eine Nachricht und wir melden uns bald bei dir!",
+      "leadersdescription": "2025",
+      "description": "Lerne das Core‑Team hinter DSC Darmstadt kennen"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Du willst mitmachen oder hast Fragen? Schreib uns!",
+      "email": "E‑Mail",
+      "social": "Folge uns auf Social Media",
+      "formTitle": "Nachricht senden",
+      "formDescription": "Fragen oder Lust mitzumachen? Schreib uns – wir melden uns bald.",
       "form": {
         "name": "Name",
         "namePlaceholder": "Dein vollständiger Name",
-        "email": "E-Mail",
-        "emailPlaceholder": "deine.email@beispiel.de",
+        "email": "E‑Mail",
+        "emailPlaceholder": "deine.email@beispiel.com",
         "subject": "Betreff",
-        "subjectPlaceholder": "Worum geht es?",
+        "subjectPlaceholder": "Worum geht's?",
         "message": "Nachricht",
-        "messagePlaceholder": "Erzähl uns mehr über deine Anfrage...",
+        "messagePlaceholder": "Erzähl uns kurz, worum es geht...",
         "submit": "Nachricht senden",
-        "successMessage": "Nachricht erfolgreich gesendet! Wir melden uns bald bei dir.",
-        "errorMessage": "Fehler beim Senden der Nachricht. Bitte versuche es erneut oder kontaktiere uns direkt."
+        "successMessage": "Nachricht gesendet! Wir melden uns bald.",
+        "errorMessage": "Senden fehlgeschlagen. Bitte erneut versuchen oder direkt kontaktieren."
       }
     }
   },
@@ -137,24 +172,25 @@
     "close": "Schließen",
     "readMore": "Weiterlesen",
     "showLess": "Weniger anzeigen"
-  },  "footer": {
-    "description": "Developer Student Club an der TU Darmstadt - Gemeinsam die Zukunft der Technologie gestalten.",
+  },
+  "footer": {
+    "description": "Developer Student Club an der TU Darmstadt – Gemeinsam die Zukunft der Technologie bauen.",
     "links": {
       "quick": "Schnellzugriff",
-      "connect": "Verbinden",
+      "connect": "Kontakt",
       "legal": "Rechtliches"
     },
-    "copyright": "© 2025 Developer Student Club Darmstadt. Alle Rechte vorbehalten."
+    "copyright": "Developer Student Club Darmstadt. Built with ❤"
   },
   "notFound": {
     "title": "Seite nicht gefunden",
-    "description": "Die Seite, die du suchst, existiert nicht oder wurde verschoben.",
+    "description": "Die Seite existiert nicht oder wurde verschoben.",
     "backHome": "Zur Startseite",
     "goBack": "Zurück"
   },
   "error": {
     "title": "Etwas ist schiefgelaufen",
-    "description": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuche es erneut oder kontaktiere den Support, falls das Problem weiterhin besteht.",
+    "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte erneut versuchen oder den Support kontaktieren.",
     "technicalDetails": "Technische Details",
     "tryAgain": "Erneut versuchen",
     "backHome": "Zur Startseite"

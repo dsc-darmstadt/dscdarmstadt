@@ -23,10 +23,11 @@ export async function generateMetadata({
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dsc-darmstadt.de';
   const fullUrl = `${baseUrl}${path}`;
 
-  const defaultTitle = 'Developer Student Club Darmstadt';
-  const defaultDescription = 'Join TU Darmstadt\'s premier developer community. Connect with industry leaders, participate in hackathons, and build the future of technology together.';
+  const defaultTitle = 'DSCD';
+  const defaultDescription = 'Join TU Darmstadt\'s developer community. Connect with industry leaders, participate in hackathons, and build the future of technology together.';
 
-  const metaTitle = title ? `${title} | ${defaultTitle}` : defaultTitle;
+  // Don't manually add the site name here - the root layout template will handle it
+  const metaTitle = title || defaultTitle;
   const metaDescription = description || defaultDescription;
 
   const defaultKeywords = [
@@ -113,10 +114,10 @@ export async function generateMetadata({
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dsc-darmstadt.de'),
   title: {
-    default: 'Developer Student Club Darmstadt',
-    template: '%s | Developer Student Club Darmstadt'
+    default: 'DSC Darmstadt',
+    template: '%s | DSCD'
   },
-  description: 'Join TU Darmstadt\'s premier developer community. Connect with industry leaders, participate in hackathons, and build the future of technology together.',
+  description: 'Join TU Darmstadt\'s developer community. Connect with industry leaders, participate in hackathons, and build the future of technology together.',
   applicationName: 'DSC Darmstadt',
   referrer: 'origin-when-cross-origin',
   formatDetection: {

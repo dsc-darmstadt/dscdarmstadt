@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { getAllEvents } from '@/lib/data/events'
+import { getEventById } from '@/lib/data/events'
 import { formatDate, formatTime } from '@/lib/utils'
 import { Calendar, MapPin, Clock, Users, ExternalLink, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
@@ -20,8 +20,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
   const t = await getTranslations('events')
 
   // Find the event by ID
-  const allEvents = getAllEvents()
-  const event = allEvents.find(e => e.id === eventId)
+  const event = await getEventById(eventId)
 
   if (!event) {
     notFound()
@@ -58,7 +57,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium flex items-center">
                     <Calendar className="w-4 h-4 mr-2" />
-                    {t('date')}
+                    {t('details.date')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -70,7 +69,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium flex items-center">
                     <Clock className="w-4 h-4 mr-2" />
-                    {t('time')}
+                    {t('details.time')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -82,7 +81,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium flex items-center">
                     <MapPin className="w-4 h-4 mr-2" />
-                    {t('location')}
+                    {t('details.location')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -94,7 +93,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium flex items-center">
                     <Users className="w-4 h-4 mr-2" />
-                    {t('participants')}
+                    {t('details.participants')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -125,18 +124,26 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
 
                     <div>
                       <h3 className="text-lg font-semibold mb-2">{t('whatYoullLearn')}</h3>
-                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Practical hands-on experience with modern technologies</li>
-                        <li>Best practices and industry standards</li>
-                        <li>Networking opportunities with fellow developers</li>
-                        <li>Real-world project implementation</li>
-                      </ul>
+                      {event.learningObjectives && event.learningObjectives.length > 0 ? (
+                        <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                          {event.learningObjectives.map((objective, index) => (
+                            <li key={index}>{objective}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                          <li>Practical hands-on experience with modern technologies</li>
+                          <li>Best practices and industry standards</li>
+                          <li>Networking opportunities with fellow developers</li>
+                          <li>Real-world project implementation</li>
+                        </ul>
+                      )}
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold mb-2">{t('whoShouldAttend')}</h3>
                       <p className="text-muted-foreground">
-                        This event is perfect for students and developers of all skill levels who are interested in expanding their knowledge and connecting with the tech community.
+                        {event.targetAudience || "This event is perfect for students and developers of all skill levels who are interested in expanding their knowledge and connecting with the tech community."}
                       </p>
                     </div>
                   </div>
@@ -197,11 +204,19 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                   <CardTitle>{t('requirements')}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Laptop with development environment</li>
-                    <li>• Basic programming knowledge</li>
-                    <li>• Enthusiasm to learn!</li>
-                  </ul>
+                  {event.requirements && event.requirements.length > 0 ? (
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      {event.requirements.map((requirement, index) => (
+                        <li key={index}>• {requirement}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Laptop with development environment</li>
+                      <li>• Basic programming knowledge</li>
+                      <li>• Enthusiasm to learn!</li>
+                    </ul>
+                  )}
                 </CardContent>
               </Card>
             </div>

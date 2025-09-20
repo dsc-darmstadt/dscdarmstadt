@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <footer className="bg-muted/50 border-t">
       <div className="container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
@@ -56,41 +56,19 @@ export function Footer() {
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
               </a>
-              <a href="https://github.com/dsc-darmstadt" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://github.com/adham-elaraby/dscd-website-experimental" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </a>
-              <a href="https://linkedin.com/company/dsc-darmstadt" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://www.linkedin.com/company/dsc-tu-darmstadt/" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </a>
-              <a href="https://instagram.com/dsc_darmstadt" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://instagram.com/dsc.darmstadt" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </a>
             </div>
-          </div>
-
-          {/* Legal */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold">{t('links.legal')}</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link href="/imprint" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Imprint
-                </Link>
-              </li>
-            </ul>
           </div>
         </div>
 

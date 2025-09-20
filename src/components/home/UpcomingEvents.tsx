@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image" 
+import Image from "next/image"
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Event } from '@/lib/types'
@@ -23,7 +23,7 @@ export function UpcomingEvents({ events }: UpcomingEventsProps) {
       {events.slice(0, 3).map((event, index) => (
         <motion.div
           key={event.id}
-          className="flex-none w-80 sm:w-96" 
+          className="flex-none w-80 sm:w-96"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -32,12 +32,12 @@ export function UpcomingEvents({ events }: UpcomingEventsProps) {
             <div className="aspect-video relative overflow-hidden rounded-t-lg">
               {event.imageUrl ? (
                 <Image
-                  src={event.imageUrl}   
+                  src={event.imageUrl}
                   alt={event.title}
-                  fill                   
+                  fill
                   className="object-cover"
-                  sizes="(min-width: 640px) 384px, 320px"  
-                  priority={index === 0}  
+                  sizes="(min-width: 640px) 384px, 320px"
+                  priority={index === 0}
                 />
               ) : (
                 <div className="bg-gradient-to-br from-primary/20 to-secondary/20 h-full w-full flex items-center justify-center">
@@ -46,7 +46,7 @@ export function UpcomingEvents({ events }: UpcomingEventsProps) {
               )}
             </div>
             <CardHeader>
-              <CardTitle className="line-clamp-2">{event.title}</CardTitle>
+              <CardTitle className="line-clamp-2 pb-1">{event.title}</CardTitle>
               <CardDescription className="line-clamp-3">
                 {event.description}
               </CardDescription>

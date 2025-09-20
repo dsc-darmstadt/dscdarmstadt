@@ -1,149 +1,101 @@
 import { Event } from '../types';
 
-export const events: Event[] = [
-  {
-    id: "summer-hackathon-2025",
-    title: "LeetCode TechJam 2.0",
-    description: "Join us for the second edition of our algorithmic coding night! Tackle new LeetCode-style challenges, compete solo or in teams, and test your skills under time pressure. Expect fun twists, fresh problems, and great vibes with fellow coders. Snacks, prizes, and tech talks included!",
-    date: "To be announced",
-    location: "To be announced",
-    imageUrl: "/images/leetcode.jpg",
-    registrationLink: "To be announced",
-    isPast: false,
-    tags: ["challenge", "problem solving", "prizes"],
-    duration: "4 hours",
-    maxParticipants: 120,
-    organizer: "DSC Darmstadt"
-  },
-  {
-    id: "react-workshop-june",
-    title: "Monthly Coding Space",
-    description: "Connect with fellow students and developers at our Monthly Coding Space! This relaxed meetup is all about sharing project ideas, asking questions, and building community. Whether you're just starting out or already deep into development, join us to chat tech, get inspired, and find collaborators. All experience levels and interests welcome!",
-    date: "To be announced",
-    location: "To be announced",
-    imageUrl: "images/github.jpg",
-    registrationLink: "To be announced",
-    isPast: false,
-    tags: ["workshop", "community", "project exchange"],
-    duration: "4 hours",
-    maxParticipants: 30,
-    organizer: "DSC Darmstadt"
-  },
-  {
-    id: "summer-hackathon-2025",
-    title: "LeetCode TechJam 1.0",
-    description: "Join us for an intense evening of algorithmic problem-solving! Compete solo or in teams to solve LeetCode-style challenges under time pressure. Great for testing your skills and meeting other passionate coders. Snacks and prizes included!",
-    date: "2024-01-19T18:00:00",
-    isPast: false,
-    tags: ["hackathon", "community"],
-    location: "HDA, Computer Science Faculty, Room D 14",
-    imageUrl: "/images/leetcode.jpg",
-    organizer: "DSC Darmstadt"
-  },
-   {
-    id: "summer-hackathon-2025",
-    title: "Developer & Students Meetup",
-    description: "A casual networking evening for developers and students to connect, exchange project ideas, and explore collaboration opportunities. Expect short lightning talks, free snacks, and great conversations about tech, careers, and innovation.",
-    date: "2023-12-14T18:00:00",
-    isPast: false,
-    tags: ["meetup", "community"],
-    location: "Darmstadt Schloss, Christmas Market",
-    imageUrl: "/images/christmas.jpg",
-    organizer: "DSC Darmstadt"
-  },
-   {
-    id: "summer-hackathon-2025",
-    title: "AI in Tech Frankfurt",
-    description: "Explore the latest advancements in AI and how they're transforming industries. This conference features talks from AI researchers, startup founders, and tech professionals, with a focus on real-world applications in automation, finance, and health tech.",
-    date: "2024-07-23T18:00:00",
-    isPast: false,
-    tags: ["networking", "community"],
-    location: "Waxy's Irish Pub, Frankfurt",
-    imageUrl: "/images/ai.jpg",
-    organizer: "DSC Darmstadt"
-  },
-     {
-    id: "summer-hackathon-2025",
-    title: "Startup Pitch Night Wiesbaden",
-    description: "Witness early-stage startups pitch their ideas to a panel of investors and entrepreneurs. Gain insights into the startup ecosystem, learn what makes a great pitch, and network with founders and VCs in a relaxed atmosphere.",
-    date: "2024-06-05T17:30:00",
-    isPast: false,
-    tags: ["pitching", "innovation", "community"],
-    location: "Heimathafen Wiesbaden",
-    imageUrl: "/images/startups.png",
-    organizer: "DSC Darmstadt"
-  },
-  {
-    id: "ai-ml-symposium",
-    title: "AI & Machine Learning Industry Symposium",
-    description: "Connect with industry leaders from Google, Microsoft, and SAP as they share insights on the latest AI trends. Network with professionals, attend technical talks, and discover internship opportunities in machine learning and data science.",
-    date: "2025-08-20T10:00:00",
-    location: "TU Darmstadt, darmstadtium Convention Center",
-    imageUrl: "/images/aiml.jpg",
-    registrationLink: "https://forms.example.com/ai-symposium",
-    isPast: false,
-    tags: ["symposium", "ai", "machine learning", "networking", "industry"],
-    duration: "6 hours",
-    maxParticipants: 200,
-    organizer: "DSC Darmstadt"
-  },
-  {
-    id: "winter-coding-bootcamp",
-    title: "Winter Coding Bootcamp 2024",
-    description: "An intensive 3-day coding bootcamp covering full-stack development with modern technologies. Participants built real-world applications and competed in daily coding challenges. Featured guest speakers from leading tech companies shared career insights.",
-    date: "2024-12-05T09:00:00",
-    location: "TU Darmstadt, Computer Science Building",
-    imageUrl: "/images/placeholder-bootcamp.jpg",
-    isPast: true,
-    tags: ["bootcamp", "full-stack", "coding", "career"],
-    duration: "3 days",
-    maxParticipants: 80,
-    organizer: "DSC Darmstadt"
-  },
-  {
-    id: "blockchain-workshop-2024",
-    title: "Blockchain & Web3 Development Workshop",
-    description: "Explored the fundamentals of blockchain technology and smart contract development. Participants learned Solidity programming, built DApps, and discovered opportunities in the growing Web3 ecosystem.",
-    date: "2024-10-15T13:00:00",
-    location: "TU Darmstadt, Innovation Lab",
-    imageUrl: "/images/placeholder-blockchain.jpg",
-    isPast: true,
-    tags: ["workshop", "blockchain", "web3", "solidity", "smart contracts"],
-    duration: "5 hours",
-    maxParticipants: 40,
-    organizer: "DSC Darmstadt"
+// Helper function to get base URL
+function getBaseUrl() {
+  if (typeof window !== 'undefined') {
+    // Browser should use relative path
+    return '';
   }
-];
 
-export function getUpcomingEvents(limit?: number): Event[] {
+  // Check for Cloudflare Pages environment
+  if (process.env.CF_PAGES_URL) {
+    return process.env.CF_PAGES_URL;
+  }
+
+  if (process.env.VERCEL_URL) {
+    // Reference for vercel.com
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  if (process.env.NODE_ENV === 'development') {
+    // Development
+    return 'http://localhost:3000';
+  }
+
+  // Production fallback - try to determine from global env
+  if (typeof globalThis !== 'undefined' && globalThis.location) {
+    return `${globalThis.location.protocol}//${globalThis.location.host}`;
+  }
+
+  // Last resort - use current deployment URL
+  return 'https://testing.dscd-website-experimental.pages.dev';
+}
+
+// Fetch events from API
+export async function getEvents(): Promise<Event[]> {
+  try {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/events`);
+    const result = await response.json();
+
+    if (!result.success) {
+      console.error('Failed to fetch events:', result.error);
+      return [];
+    }
+
+    return result.data;
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    return [];
+  }
+}
+
+// Get upcoming events
+export async function getUpcomingEvents(limit?: number): Promise<Event[]> {
+  const events = await getEvents();
+  const now = new Date();
   const upcoming = events
-    .filter(event => !event.isPast)
+    .filter(event => new Date(event.date) >= now)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   return limit ? upcoming.slice(0, limit) : upcoming;
 }
 
-/*export function getPastEvents(limit?: number): Event[] { // not necessary
+// Get past events
+export async function getPastEvents(limit?: number): Promise<Event[]> {
+  const events = await getEvents();
+  const now = new Date();
   const past = events
-    .filter(event => event.isPast)
+    .filter(event => new Date(event.date) < now)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   return limit ? past.slice(0, limit) : past;
-}*/
-
-export function getPastEvents(limit?: number): Event[] {
-  const sorted_events = events.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-  return limit ? sorted_events.slice(0, limit) : sorted_events;
 }
 
-export function getAllEvents(): Event[] {
-  return events;
+// Get featured events
+export async function getFeaturedEvents(): Promise<Event[]> {
+  const events = await getEvents();
+  return events.filter(event => event.is_featured === true);
 }
 
-export function getEventById(id: string): Event | undefined {
-  return events.find(event => event.id === id);
+// Get single event by ID
+export async function getEventById(id: string): Promise<Event | null> {
+  try {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/events/${id}`);
+    const result = await response.json();
+
+    if (!result.success) {
+      console.error('Failed to fetch event:', result.error);
+      return null;
+    }
+
+    return result.data;
+  } catch (error) {
+    console.error('Error fetching event:', error);
+    return null;
+  }
 }
 
-export function getFeaturedEvents(limit: number = 3): Event[] {
-  return getUpcomingEvents(limit);
+// Get all events (alias for getEvents for backward compatibility)
+export async function getAllEvents(): Promise<Event[]> {
+  return getEvents();
 }

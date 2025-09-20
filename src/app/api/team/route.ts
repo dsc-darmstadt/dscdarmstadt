@@ -1,38 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseClient } from '@/lib/supabase';
-import { dbEventToEvent, eventToDbEvent } from '@/lib/utils/converters';
+import { dbTeamMemberToTeamMember, teamMemberToDbTeamMember } from '@/lib/utils/converters';
 
 export const runtime = 'edge';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
-    
-    const { data: events, error } = await supabase
-      .from('events')
+
+    // Check for leadership filter
+    const { searchParams } = new URL(request.url);
+    const leadershipParam = searchParams.get('leadership');
+
+    let query = supabase
+      .from('team_members')
       .select('*')
-      .order('date', { ascending: true });
+      .order('order_index', { ascending: true, nullsFirst: false });
+
+    // Add leadership filter if requested
+    if (leadershipParam === 'true') {
+      query = query.eq('is_leadership', true);
+    } else if (leadershipParam === 'false') {
+      query = query.eq('is_leadership', false);
+    }
+
+    const { data: teamMembers, error } = await query;
 
     if (error) {
       console.error('Supabase error:', error);
       throw error;
     }
 
-    // Convert database events to frontend format
-    const convertedEvents = events.map(dbEventToEvent);
+    // Convert database team members to frontend format
+    const convertedTeamMembers = teamMembers.map(dbTeamMemberToTeamMember);
 
     return NextResponse.json({
       success: true,
-      data: convertedEvents,
-      message: 'Events fetched successfully'
+      data: convertedTeamMembers,
+      message: `${leadershipParam === 'true' ? 'Leadership team' : leadershipParam === 'false' ? 'Core team members' : 'Team members'} fetched successfully`
     });
   } catch (error) {
-    console.error('Error fetching events:', error);
+    console.error('Error fetching team members:', error);
     return NextResponse.json(
       {
         success: false,
-        error: 'Failed to fetch events',
+        error: 'Failed to fetch team members',
         message: 'Internal server error'
       },
       { status: 500 }
@@ -45,7 +58,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Validate required fields
-    const requiredFields = ['title', 'description', 'date', 'location', 'imageUrl'];
+    const requiredFields = ['name', 'role', 'bio', 'imageUrl'];
     for (const field of requiredFields) {
       if (!body[field]) {
         return NextResponse.json(
@@ -59,15 +72,15 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Convert frontend event to database format
-    const dbEvent = eventToDbEvent(body);
+    // Convert frontend team member to database format
+    const dbTeamMember = teamMemberToDbTeamMember(body);
 
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
 
     const { data, error } = await supabase
-      .from('events')
-      .insert(dbEvent)
+      .from('team_members')
+      .insert(dbTeamMember)
       .select()
       .single();
 
@@ -77,19 +90,19 @@ export async function POST(request: NextRequest) {
     }
 
     // Convert back to frontend format
-    const newEvent = dbEventToEvent(data);
+    const newTeamMember = dbTeamMemberToTeamMember(data);
 
     return NextResponse.json({
       success: true,
-      data: newEvent,
-      message: 'Event created successfully'
+      data: newTeamMember,
+      message: 'Team member created successfully'
     }, { status: 201 });
   } catch (error) {
-    console.error('Error creating event:', error);
+    console.error('Error creating team member:', error);
     return NextResponse.json(
       {
         success: false,
-        error: 'Failed to create event',
+        error: 'Failed to create team member',
         message: 'Internal server error'
       },
       { status: 500 }
