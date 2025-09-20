@@ -4,13 +4,5 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "pages_build_output_dir": ".vercel/output/static",
-  "vars": {
-    // Environment variables that will be available via env bindings
-    // These will be overridden by the actual values set in Cloudflare Pages dashboard
-    "NEXT_PUBLIC_SUPABASE_URL": "",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "",
-    "SUPABASE_URL": "",
-    "SUPABASE_ANON_KEY": ""
-  }
+  "pages_build_output_dir": ".vercel/output/static"
 }
