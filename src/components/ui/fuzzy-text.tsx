@@ -55,8 +55,9 @@ const FuzzyText = React.forwardRef<
     if (!canvas) return
 
     // Clean up previous animation if it exists
-    if (canvas.cleanupFuzzyText) {
-      canvas.cleanupFuzzyText()
+    const canvasWithCleanup = canvas as HTMLCanvasElement & { cleanupFuzzyText?: () => void }
+    if (canvasWithCleanup.cleanupFuzzyText) {
+      canvasWithCleanup.cleanupFuzzyText()
     }
 
     const init = async () => {
@@ -214,7 +215,8 @@ const FuzzyText = React.forwardRef<
         }
       }
 
-      canvas.cleanupFuzzyText = cleanup
+      const canvasWithCleanup = canvas as HTMLCanvasElement & { cleanupFuzzyText?: () => void }
+      canvasWithCleanup.cleanupFuzzyText = cleanup
     }
 
     init()
@@ -222,8 +224,9 @@ const FuzzyText = React.forwardRef<
     return () => {
       isCancelled = true
       window.cancelAnimationFrame(animationFrameId)
-      if (canvas && canvas.cleanupFuzzyText) {
-        canvas.cleanupFuzzyText()
+      const canvasWithCleanup = canvas as HTMLCanvasElement & { cleanupFuzzyText?: () => void }
+      if (canvas && canvasWithCleanup.cleanupFuzzyText) {
+        canvasWithCleanup.cleanupFuzzyText()
       }
     }
   }, [
