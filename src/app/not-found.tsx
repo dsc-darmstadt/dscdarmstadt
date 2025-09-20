@@ -12,7 +12,7 @@ export default function NotFound() {
         {/* Fuzzy 404 Text */}
         <div className="flex justify-center">
           <FuzzyText
-            fontSize="clamp(4rem, 15vw, 12rem)"
+            fontSize="clamp(6rem, 20vw, 12rem)"
             fontWeight={900}
             baseIntensity={0.2}
             hoverIntensity={0.5}
