@@ -21,14 +21,14 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container relative flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <Code className="h-6 w-6" />
           <span className="font-bold text-lg">DSC Darmstadt</span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6">
+        {/* Desktop Navigation - Absolutely centered */}
+        <nav className="hidden md:flex gap-6 absolute left-1/2 transform -translate-x-1/2">
           {navigation.map((item) => (
             <Link
               key={item.href}
