@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     
     // Check for leadership filter
     const { searchParams } = new URL(request.url);
-    const isLeadership = searchParams.get('leadership') === 'true';
+    const leadershipParam = searchParams.get('leadership');
     
     let query = supabase
       .from('team_members')
@@ -19,8 +19,10 @@ export async function GET(request: NextRequest) {
       .order('order_index', { ascending: true, nullsFirst: false });
     
     // Add leadership filter if requested
-    if (isLeadership) {
+    if (leadershipParam === 'true') {
       query = query.eq('is_leadership', true);
+    } else if (leadershipParam === 'false') {
+      query = query.eq('is_leadership', false);
     }
 
     const { data: teamMembers, error } = await query;
@@ -36,7 +38,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       data: convertedTeamMembers,
-      message: `${isLeadership ? 'Leadership team' : 'Team members'} fetched successfully`
+      message: `${leadershipParam === 'true' ? 'Leadership team' : leadershipParam === 'false' ? 'Core team members' : 'Team members'} fetched successfully`
     });
   } catch (error) {
     console.error('Error fetching team members:', error);

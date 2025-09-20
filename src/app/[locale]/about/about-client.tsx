@@ -94,27 +94,27 @@ interface AboutClientProps {
 
 export default function AboutClient({ locale }: AboutClientProps) {
   const t = useTranslations('about')
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
+  const [coreTeamMembers, setCoreTeamMembers] = useState<TeamMember[]>([])
   const [leadershipTeam, setLeadershipTeam] = useState<TeamMember[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        const [teamResponse, leadershipResponse] = await Promise.all([
-          fetch('/api/team'),
+        const [coreTeamResponse, leadershipResponse] = await Promise.all([
+          fetch('/api/team?leadership=false'),
           fetch('/api/team?leadership=true')
         ])
-        
-        const [teamResult, leadershipResult] = await Promise.all([
-          teamResponse.json(),
+
+        const [coreTeamResult, leadershipResult] = await Promise.all([
+          coreTeamResponse.json(),
           leadershipResponse.json()
         ])
-        
-        if (teamResult.success) {
-          setTeamMembers(teamResult.data)
+
+        if (coreTeamResult.success) {
+          setCoreTeamMembers(coreTeamResult.data)
         }
-        
+
         if (leadershipResult.success) {
           setLeadershipTeam(leadershipResult.data)
         }
@@ -317,8 +317,8 @@ export default function AboutClient({ locale }: AboutClientProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {loading ? (
-            // Loading skeleton for full team
-            Array.from({ length: 6 }).map((_, index) => (
+            // Loading skeleton for core team
+            Array.from({ length: 5 }).map((_, index) => (
               <div key={index} className="space-y-4">
                 <Skeleton className="aspect-square rounded-t-lg" />
                 <div className="p-6 space-y-2">
@@ -329,7 +329,7 @@ export default function AboutClient({ locale }: AboutClientProps) {
               </div>
             ))
           ) : (
-            teamMembers.map((member, index) => (
+            coreTeamMembers.map((member, index) => (
               <TeamMemberCard key={member.id} member={member} index={index} />
             ))
           )}
