@@ -15,6 +15,13 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = defaultMetadata;
 
+// App Router viewport configuration
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover', // This should work in newer Next.js versions
+};
+
 // This component will be server-rendered and should not cause hydration issues
 export default function RootLayout({
   children,
