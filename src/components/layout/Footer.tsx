@@ -36,8 +36,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  {navT('projects')}
+                <Link href="" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  {navT('projects') + '(soon!)'}
                 </Link>
               </li>
               <li>
