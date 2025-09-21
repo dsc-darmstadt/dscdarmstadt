@@ -113,6 +113,7 @@ export async function generateMetadata({
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dsc-darmstadt.de'),
+  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
   title: {
     default: 'DSC Darmstadt',
     template: '%s | DSCD'

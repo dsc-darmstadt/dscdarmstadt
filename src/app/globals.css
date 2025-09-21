@@ -40,3 +40,47 @@
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 }
+
+/* Safe area support for iPhone with fallbacks */
+.pt-safe-top {
+  padding-top: 12px; /* Fallback for non-iPhone browsers */
+  padding-top: constant(safe-area-inset-top); /* Legacy iOS 11.0/11.1 */
+  padding-top: env(safe-area-inset-top); /* Modern iOS */
+}
+
+.px-safe-x {
+  padding-left: 16px; /* Fallback for non-iPhone browsers */
+  padding-right: 16px; /* Fallback for non-iPhone browsers */
+  padding-left: constant(safe-area-inset-left); /* Legacy iOS 11.0/11.1 */
+  padding-right: constant(safe-area-inset-right); /* Legacy iOS 11.0/11.1 */
+  padding-left: env(safe-area-inset-left); /* Modern iOS */
+  padding-right: env(safe-area-inset-right); /* Modern iOS */
+}
+
+/* Enhanced safe area support with minimum padding */
+@supports(padding: max(0px)) {
+  .pt-safe-top {
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+
+  .px-safe-x {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  .pb-safe-bottom {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Ensure body accommodates fixed navbar */
+body {
+  padding-top: 64px; /* Standard navbar height */
+}
+
+/* Adjust body padding for iPhone safe areas */
+@supports(padding: max(0px)) {
+  body {
+    padding-top: max(64px, calc(64px + env(safe-area-inset-top)));
+  }
+}
