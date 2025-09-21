@@ -31,7 +31,7 @@ export default async function LocaleLayout({
         enableSystem
         disableTransitionOnChange
       >
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col no-scrollbar">
           <SkipToContent />
           <Navbar />
           <main id="main-content" tabIndex={-1} className="flex-1 main-content">{children}</main>

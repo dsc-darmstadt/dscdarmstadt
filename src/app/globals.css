@@ -9,8 +9,28 @@ html {
   scrollbar-width: none;      /* Firefox */
 }
 
+/* Also target body and all containers */
+html, body, * {
+  -ms-overflow-style: none;   /* IE and Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+
 /* Hide scrollbar for WebKit browsers (Chrome, Safari, newer Edge) */
-html::-webkit-scrollbar {
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  background: transparent;
+}
+
+/* Utility class to hide scrollbars */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
