@@ -114,6 +114,33 @@ export async function generateMetadata({
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dsc-darmstadt.de'),
   viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'DSC Darmstadt'
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: [
+      {
+        url: '/apple-touch-icon.svg',
+        sizes: '180x180',
+        type: 'image/svg+xml',
+      }
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/apple-touch-icon.svg',
+        color: '#4F46E5'
+      }
+    ]
+  },
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'mobile-web-app-capable': 'yes'
+  },
   title: {
     default: 'DSC Darmstadt',
     template: '%s | DSCD'

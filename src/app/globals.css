@@ -41,46 +41,74 @@
   }
 }
 
-/* Safe area support for iPhone with fallbacks */
+/* iOS PWA and Safe Area Support */
+@supports (padding: constant(safe-area-inset-top)) or (padding: env(safe-area-inset-top)) {
+  :root {
+    --safe-area-inset-top: constant(safe-area-inset-top);
+    --safe-area-inset-right: constant(safe-area-inset-right);
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+    --safe-area-inset-left: constant(safe-area-inset-left);
+  }
+
+  @supports (padding: env(safe-area-inset-top)) {
+    :root {
+      --safe-area-inset-top: env(safe-area-inset-top);
+      --safe-area-inset-right: env(safe-area-inset-right);
+      --safe-area-inset-bottom: env(safe-area-inset-bottom);
+      --safe-area-inset-left: env(safe-area-inset-left);
+    }
+  }
+}
+
+/* Safe area utility classes */
 .pt-safe-top {
-  padding-top: 12px; /* Fallback for non-iPhone browsers */
-  padding-top: constant(safe-area-inset-top); /* Legacy iOS 11.0/11.1 */
-  padding-top: env(safe-area-inset-top); /* Modern iOS */
+  padding-top: 12px; /* Fallback */
 }
 
 .px-safe-x {
-  padding-left: 16px; /* Fallback for non-iPhone browsers */
-  padding-right: 16px; /* Fallback for non-iPhone browsers */
-  padding-left: constant(safe-area-inset-left); /* Legacy iOS 11.0/11.1 */
-  padding-right: constant(safe-area-inset-right); /* Legacy iOS 11.0/11.1 */
-  padding-left: env(safe-area-inset-left); /* Modern iOS */
-  padding-right: env(safe-area-inset-right); /* Modern iOS */
+  padding-left: 16px; /* Fallback */
+  padding-right: 16px; /* Fallback */
 }
 
-/* Enhanced safe area support with minimum padding */
-@supports(padding: max(0px)) {
+.pb-safe-bottom {
+  padding-bottom: 12px; /* Fallback */
+}
+
+@supports (padding: constant(safe-area-inset-top)) or (padding: env(safe-area-inset-top)) {
   .pt-safe-top {
-    padding-top: max(12px, env(safe-area-inset-top));
+    padding-top: max(12px, var(--safe-area-inset-top));
   }
 
   .px-safe-x {
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
+    padding-left: max(16px, var(--safe-area-inset-left));
+    padding-right: max(16px, var(--safe-area-inset-right));
   }
 
   .pb-safe-bottom {
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    padding-bottom: max(12px, var(--safe-area-inset-bottom));
   }
 }
 
-/* Ensure body accommodates fixed navbar */
+/* Body adjustments for glass effect - content scrolls behind navbar */
 body {
-  padding-top: 64px; /* Standard navbar height */
+  /* Remove body padding to allow content behind navbar */
+  padding-top: 0;
 }
 
-/* Adjust body padding for iPhone safe areas */
-@supports(padding: max(0px)) {
+/* Add top margin to main content instead of body padding */
+.main-content {
+  margin-top: 64px; /* Base navbar height */
+}
+
+@supports (padding: constant(safe-area-inset-top)) or (padding: env(safe-area-inset-top)) {
+  .main-content {
+    margin-top: max(64px, calc(64px + var(--safe-area-inset-top)));
+  }
+}
+
+/* Ensure full viewport height on iOS */
+@supports (-webkit-touch-callout: none) {
   body {
-    padding-top: max(64px, calc(64px + env(safe-area-inset-top)));
+    min-height: -webkit-fill-available;
   }
 }
