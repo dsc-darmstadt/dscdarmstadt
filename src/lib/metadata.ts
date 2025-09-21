@@ -15,7 +15,7 @@ export async function generateMetadata({
   description,
   keywords = [],
   path = '',
-  image = '/og-image.jpg',
+  image = '/og-image.jpg', // TODO: add real og image 1200x630px
   locale = 'en'
 }: MetadataConfig): Promise<Metadata> {
   const t = await getTranslations({ locale });
@@ -105,7 +105,7 @@ export async function generateMetadata({
     manifest: '/manifest.json',
 
     other: {
-      'theme-color': '#4285F4',
+      'theme-color': '#ffffff',
       'color-scheme': 'light dark',
     },
   };
@@ -115,35 +115,44 @@ export const defaultMetadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dsc-darmstadt.de'),
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'default',
-    title: 'DSC Darmstadt'
+    statusBarStyle: 'black-translucent',
+    title: 'DSCD' // This generates apple-mobile-web-app-title
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/icon0.svg', type: 'image/svg+xml' },
+      { url: '/icon1.png', type: 'image/png', sizes: '32x32' }
+    ],
     apple: [
       {
-        url: '/apple-touch-icon.svg',
+        url: '/apple-icon.png',
         sizes: '180x180',
-        type: 'image/svg+xml',
+        type: 'image/png',
       }
     ],
     other: [
       {
         rel: 'apple-touch-icon',
-        url: '/apple-touch-icon.svg',
+        url: '/apple-icon.png',
+        sizes: '180x180'
+      },
+      {
+        rel: 'apple-touch-icon-precomposed',
+        url: '/apple-icon.png',
         sizes: '180x180'
       },
       {
         rel: 'mask-icon',
-        url: '/apple-touch-icon.svg',
+        url: '/icon0.svg',
         color: '#4285F4'
       }
     ]
   },
   other: {
     'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'default',
-    'mobile-web-app-capable': 'yes'
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'mobile-web-app-capable': 'yes',
   },
   title: {
     default: 'DSC Darmstadt',
