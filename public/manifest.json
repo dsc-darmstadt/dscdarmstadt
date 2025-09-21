@@ -2,11 +2,13 @@
   "name": "Developer Student Club Darmstadt",
   "short_name": "DSC Darmstadt",
   "description": "Join TU Darmstadt's premier developer community",
-  "start_url": "/",
+  "start_url": "/en",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4285F4",
+  "theme_color": "#ffffff",
   "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "display_override": ["window-controls-overlay"],
   "icons": [
     {
       "src": "/icon-192x192.svg",
@@ -21,11 +23,23 @@
     {
       "src": "/apple-touch-icon.svg",
       "sizes": "180x180",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["education", "developer tools", "community"],
   "lang": "en",
-  "scope": "/",
   "id": "dsc-darmstadt"
 }
