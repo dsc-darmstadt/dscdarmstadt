@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://dsc-darmstadt.de/sitemap.xml
+Sitemap: https://dscd.ae0x.tech/sitemap.xml
 
 # Disallow admin and API routes
 Disallow: /api/
