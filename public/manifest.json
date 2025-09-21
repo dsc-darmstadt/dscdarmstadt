@@ -3,6 +3,7 @@
   "short_name": "DSC Darmstadt",
   "description": "Join TU Darmstadt's premier developer community",
   "start_url": "/en",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
