@@ -9,15 +9,16 @@ A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, 
 - Dynamic locale toggle (Navbar)
 - SEO-friendly localized routes (`/[locale]/*`)
 
-### 🌙 Theme Support
-- Light and dark mode
-- System preference detection
-- Smooth theme transitions
-
 ### 📱 Responsive Design
 - Mobile-first approach
 - Optimized for all screen sizes
 - Modern and accessible UI components
+
+### 📲 PWA & Edge-to-Edge Support
+- Fully installable as a Progressive Web App (PWA)
+- Custom icons, and manifest for all major platforms
+- Uses `viewport-fit=cover` to provide edge-to-edge display on modern devices (iOS/Android), ensuring content extends seamlessly into all safe areas
+- Home screen and standalone mode optimized for a native app feel
 
 ### 🎨 Modern UI/UX
 - shadcn/ui component library
