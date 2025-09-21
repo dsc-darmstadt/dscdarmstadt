@@ -40,3 +40,96 @@
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 }
+
+/* iOS PWA and Safe Area Support */
+@supports (padding: constant(safe-area-inset-top)) or (padding: env(safe-area-inset-top)) {
+  :root {
+    --safe-area-inset-top: constant(safe-area-inset-top);
+    --safe-area-inset-right: constant(safe-area-inset-right);
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+    --safe-area-inset-left: constant(safe-area-inset-left);
+  }
+
+  @supports (padding: env(safe-area-inset-top)) {
+    :root {
+      --safe-area-inset-top: env(safe-area-inset-top);
+      --safe-area-inset-right: env(safe-area-inset-right);
+      --safe-area-inset-bottom: env(safe-area-inset-bottom);
+      --safe-area-inset-left: env(safe-area-inset-left);
+    }
+  }
+}
+
+/* Safe area utility classes */
+.pt-safe-top {
+  padding-top: 12px; /* Fallback */
+}
+
+.px-safe-x {
+  padding-left: 16px; /* Fallback */
+  padding-right: 16px; /* Fallback */
+}
+
+.pb-safe-bottom {
+  padding-bottom: 12px; /* Fallback */
+}
+
+@supports (padding: constant(safe-area-inset-top)) or (padding: env(safe-area-inset-top)) {
+  .pt-safe-top {
+    padding-top: max(12px, var(--safe-area-inset-top));
+  }
+
+  .px-safe-x {
+    padding-left: max(16px, var(--safe-area-inset-left));
+    padding-right: max(16px, var(--safe-area-inset-right));
+  }
+
+  .pb-safe-bottom {
+    padding-bottom: max(12px, var(--safe-area-inset-bottom));
+  }
+}
+
+/* Body adjustments for glass effect - content scrolls behind navbar */
+body {
+  /* Remove body padding to allow content behind navbar */
+  padding-top: 0;
+  /* Ensure content extends to absolute top of viewport */
+  margin: 0;
+}
+
+/* Ensure content extends to very top edge on iPhone */
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Make sure viewport extends to edges */
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: -webkit-fill-available;
+  }
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Main content should start at top and have padding to push visible content below navbar */
+.main-content {
+  /* Start content at very top so it can scroll behind navbar */
+  margin-top: 0;
+  /* Add padding to push actual content below navbar while allowing background to scroll behind */
+  padding-top: 64px; /* Base navbar height */
+}
+
+@supports (padding: constant(safe-area-inset-top)) or (padding: env(safe-area-inset-top)) {
+  .main-content {
+    padding-top: max(64px, calc(64px + var(--safe-area-inset-top)));
+  }
+}
+
+/* Ensure full viewport height on iOS */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}

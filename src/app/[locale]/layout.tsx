@@ -34,7 +34,7 @@ export default async function LocaleLayout({
         <div className="flex min-h-screen flex-col">
           <SkipToContent />
           <Navbar />
-          <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
+          <main id="main-content" tabIndex={-1} className="flex-1 main-content">{children}</main>
           <Footer />
         </div>
       </ThemeProvider>
