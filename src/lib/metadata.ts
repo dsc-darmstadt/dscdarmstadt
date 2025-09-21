@@ -129,6 +129,11 @@ export const defaultMetadata: Metadata = {
     ],
     other: [
       {
+        rel: 'apple-touch-icon',
+        url: '/apple-touch-icon.svg',
+        sizes: '180x180'
+      },
+      {
         rel: 'mask-icon',
         url: '/apple-touch-icon.svg',
         color: '#4285F4'
