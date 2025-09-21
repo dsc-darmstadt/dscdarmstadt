@@ -20,7 +20,7 @@ export async function generateMetadata({
 }: MetadataConfig): Promise<Metadata> {
   const t = await getTranslations({ locale });
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dsc-darmstadt.de';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dscd.ae0x.tech';
   const fullUrl = `${baseUrl}${path}`;
 
   const defaultTitle = 'DSCD';
@@ -112,11 +112,11 @@ export async function generateMetadata({
 }
 
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dsc-darmstadt.de'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dscd.ae0x.tech'),
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'DSCD' // This generates apple-mobile-web-app-title
+    title: 'DSC Darmstadt' // This generates apple-mobile-web-app-title
   },
   icons: {
     icon: [
@@ -154,6 +154,7 @@ export const defaultMetadata: Metadata = {
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
     'mobile-web-app-capable': 'yes',
   },
+  manifest: '/manifest.json',
   title: {
     default: 'DSC Darmstadt',
     template: '%s | DSCD'
