@@ -93,6 +93,7 @@
   },
   "about": {
     "title": "About DSC Darmstadt",
+    "description": "Who are we and what we do at TU Darmstadt's Developer Student Club",
     "mission": {
       "title": "Our Mission",
       "description": "Developer Student Club Darmstadt is a vibrant and open community at TU Darmstadt. Officially accredited in early 2025, we're excited to bring you hands-on projects, hackathons, and events with leading tech companies."
