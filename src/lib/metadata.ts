@@ -138,7 +138,9 @@ export const defaultMetadata: Metadata = {
   other: {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
-    'mobile-web-app-capable': 'yes'
+    'mobile-web-app-capable': 'yes',
+    // Add viewport-fit=cover manually since it might not be in Viewport type
+    'viewport': 'width=device-width, initial-scale=1, viewport-fit=cover'
   },
   title: {
     default: 'DSC Darmstadt',

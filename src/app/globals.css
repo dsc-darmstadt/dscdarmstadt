@@ -93,19 +93,37 @@
 body {
   /* Remove body padding to allow content behind navbar */
   padding-top: 0;
-  /* Ensure content extends to screen edges on iOS */
+  /* Ensure content extends to absolute top of viewport */
   margin: 0;
+}
+
+/* Ensure content extends to very top edge on iPhone */
+html, body {
+  height: 100%;
   overflow-x: hidden;
 }
 
-/* Add top margin to main content instead of body padding */
+/* Make sure viewport extends to edges */
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: -webkit-fill-available;
+  }
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Main content should start at top and have padding to push visible content below navbar */
 .main-content {
-  margin-top: 64px; /* Base navbar height */
+  /* Start content at very top so it can scroll behind navbar */
+  margin-top: 0;
+  /* Add padding to push actual content below navbar while allowing background to scroll behind */
+  padding-top: 64px; /* Base navbar height */
 }
 
 @supports (padding: constant(safe-area-inset-top)) or (padding: env(safe-area-inset-top)) {
   .main-content {
-    margin-top: max(64px, calc(64px + var(--safe-area-inset-top)));
+    padding-top: max(64px, calc(64px + var(--safe-area-inset-top)));
   }
 }
 
@@ -113,10 +131,5 @@ body {
 @supports (-webkit-touch-callout: none) {
   body {
     min-height: -webkit-fill-available;
-  }
-  
-  /* Ensure html also extends full height */
-  html {
-    height: -webkit-fill-available;
   }
 }
