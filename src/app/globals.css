@@ -93,6 +93,9 @@
 body {
   /* Remove body padding to allow content behind navbar */
   padding-top: 0;
+  /* Ensure content extends to screen edges on iOS */
+  margin: 0;
+  overflow-x: hidden;
 }
 
 /* Add top margin to main content instead of body padding */
@@ -110,5 +113,10 @@ body {
 @supports (-webkit-touch-callout: none) {
   body {
     min-height: -webkit-fill-available;
+  }
+  
+  /* Ensure html also extends full height */
+  html {
+    height: -webkit-fill-available;
   }
 }

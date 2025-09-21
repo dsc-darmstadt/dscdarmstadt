@@ -113,7 +113,6 @@ export async function generateMetadata({
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dsc-darmstadt.de'),
-  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -132,7 +131,7 @@ export const defaultMetadata: Metadata = {
       {
         rel: 'mask-icon',
         url: '/apple-touch-icon.svg',
-        color: '#4F46E5'
+        color: '#4285F4'
       }
     ]
   },
