@@ -380,7 +380,7 @@ export default function AboutClient({ locale }: AboutClientProps) {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" asChild>
-              <a href="mailto:contact@dsc-darmstadt.de">
+              <a href="mailto:gdsc.tudarmstadt@gmail.com">
                 <Mail className="h-4 w-4 mr-2" />
                 {t('contact.email')}
               </a>
