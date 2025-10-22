@@ -53,8 +53,8 @@ A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/dsc-darmstadt/website.git
-   cd website
+   git clone https://github.com/dsc-darmstadt/dscdarmstadt.git
+   cd dscdarmstadt
    ```
 
 2. **Install dependencies**
@@ -65,10 +65,10 @@ A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, 
 3. **Set up environment variables**
    Create `.env.local` at the project root and add:
    ```env
-   NEXT_PUBLIC_BASE_URL=http://localhost:3000
-   GOOGLE_VERIFICATION=your_google_verification_key # optional, not used yet
+   NEXT_PUBLIC_BASE_URL=http://localhost:3000 # optional
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   GOOGLE_VERIFICATION=your_google_verification_key # optional, not used yet
    ```
    Notes:
    - These Supabase vars are required at runtime (`src/lib/supabase.ts`). If you don’t have a project yet, you may use placeholder values to boot the app, but calls to the API will fail.
@@ -84,10 +84,20 @@ A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, 
 6. **Deploy to Cloudflare by doing a push on your branch**
 
 7. **After Deployment and Build, access the preview deployment by going to:**
-   `https://<BRANCH_NAME>.dscd-website-experimental.pages.dev/en`
-   `https://testing.dscd-website-experimental.pages.dev/en`
 
-8. After PR review, admin will merge to main cloudflare branch and start automatic deployment.
+   `https://<BRANCH_NAME>.dscdarmstadt.pages.dev/en`
+   
+   `https://testing.dscdarmstadt.pages.dev/en`
+
+9. After PR review, admin will merge to main cloudflare branch and start automatic deployment.
+
+### 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📁 Project Structure
 
@@ -95,7 +105,7 @@ A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, 
 messages/                 # Localized copy (JSON): en.json, de.json
 public/                   # Static assets (icons, images, manifest)
 scripts/
-   └── populate-db.js      # Example Supabase seeding script (adjust before use)
+   └── populate-db.js      # Example Supabase seeding script (needs adjustment before use)
 src/
    ├── app/
    │  ├── [locale]/        # Localized routes
@@ -172,9 +182,8 @@ src/
 - **next-intl**
 
 ### Backend (Ready for Integration)
-- **Supabase** (database, auth, storage)
+- **Supabase** (database)
 - **API Routes** (`/api/*`)
-- **Contact Form** (POST `/api/contact`)
 
 ### Development Tools
 - **ESLint**
@@ -192,9 +201,11 @@ src/
 
 ## ☁️ Deploy (Cloudflare Pages)
 
-This project uses `@cloudflare/next-on-pages` to deploy Next.js to Cloudflare Pages.
+This project uses `@cloudflare/next-on-pages` to deploy Next.js to Cloudflare Pages and is Deployed automaticaly via GitHub integration.
 
-Scripts:
+However, if you want to deploy it yourself for some reason, you can follow the below steps.
+
+Scripts (for manual deployment):
 
 ```bash
 # Build for Cloudflare Pages
@@ -210,14 +221,6 @@ npm run deploy
 Configuration:
 - `wrangler.jsonc` sets `pages_build_output_dir` to `.vercel/output/static` and enables `nodejs_compat`.
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ## 🧪 Troubleshooting
 
 - Dev server exits immediately (env): ensure `.env.local` contains `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
@@ -230,9 +233,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-Developed with ❤️ by the Developer Student Club Darmstadt team.
-
----
-
-**Developer Student Club Darmstadt**
+Developed with ❤️ by the **Developer Student Club Darmstadt team**.
 TU Darmstadt
