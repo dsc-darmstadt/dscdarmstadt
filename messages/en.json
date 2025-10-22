@@ -43,7 +43,7 @@
       },
       "viewAll": "View All Events",
       "noUpcomingEvents": "No upcoming events at the moment. Stay tuned! 😊",
-      "noPastEvents": "Oh Oh, no past events to display. 🤔"
+      "noPastEvents": "Oh, oh, no past events to display. 🤔"
     },
     "projects": {
       "featured": {
@@ -93,7 +93,7 @@
   },
   "about": {
     "title": "About DSC Darmstadt",
-    "description": "Who are we and what we do at TU Darmstadt's Developer Student Club",
+    "description": "Who are we and what do we do at TU Darmstadt's Developer Student Club",
     "mission": {
       "title": "Our Mission",
       "description": "Developer Student Club Darmstadt is a vibrant and open community at TU Darmstadt. Officially accredited in early 2025, we're excited to bring you hands-on projects, hackathons, and events with leading tech companies."
@@ -125,7 +125,7 @@
       "corevalues": {
         "corevalue1": {
           "title": "Teamwork",
-          "description": "We work together, and push each other to learn, develop, and innovate."
+          "description": "We work together and push each other to learn, develop, and innovate."
         },
         "corevalue2": {
           "title": "Inclusivity",
@@ -133,7 +133,7 @@
         },
         "corevalue3": {
           "title": "Transparency",
-          "description": "We want you to be involved, we welcome everyone to our weekly orga meetings and discuss descisions publicly on our discord channel."
+          "description": "We want you to be involved; we welcome everyone to our weekly orga meetings and discuss decisions publicly on our Discord channel."
         }
       }
     },

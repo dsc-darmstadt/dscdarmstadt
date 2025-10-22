@@ -52,11 +52,11 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-sm font-semibold">{t('links.connect')}</h3>
             <div className="flex space-x-4">
-              <a href="mailto:contact@dsc-darmstadt.de" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="mailto:dscdarmstadt@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
               </a>
-              <a href="https://github.com/adham-elaraby/dscd-website-experimental" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://github.com/dsc-darmstadt/dscdarmstadt" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </a>

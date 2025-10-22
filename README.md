@@ -9,15 +9,16 @@ A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, 
 - Dynamic locale toggle (Navbar)
 - SEO-friendly localized routes (`/[locale]/*`)
 
-### 🌙 Theme Support
-- Light and dark mode
-- System preference detection
-- Smooth theme transitions
-
 ### 📱 Responsive Design
 - Mobile-first approach
 - Optimized for all screen sizes
 - Modern and accessible UI components
+
+### 📲 PWA & Edge-to-Edge Support
+- Fully installable as a Progressive Web App (PWA)
+- Custom icons, and manifest for all major platforms
+- Uses `viewport-fit=cover` to provide edge-to-edge display on modern devices (iOS/Android), ensuring content extends seamlessly into all safe areas
+- Home screen and standalone mode optimized for a native app feel
 
 ### 🎨 Modern UI/UX
 - shadcn/ui component library
@@ -65,7 +66,7 @@ A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, 
    Create `.env.local` at the project root and add:
    ```env
    NEXT_PUBLIC_BASE_URL=http://localhost:3000
-   GOOGLE_VERIFICATION=your_google_verification_key # optional
+   GOOGLE_VERIFICATION=your_google_verification_key # optional, not used yet
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
@@ -79,6 +80,14 @@ A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, 
 
 5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
+   
+6. **Deploy to Cloudflare by doing a push on your branch**
+
+7. **After Deployment and Build, access the preview deployment by going to:**
+   `https://<BRANCH_NAME>.dscd-website-experimental.pages.dev/en`
+   `https://testing.dscd-website-experimental.pages.dev/en`
+
+8. After PR review, admin will merge to main cloudflare branch and start automatic deployment.
 
 ## 📁 Project Structure
 
