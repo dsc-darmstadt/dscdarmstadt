@@ -354,7 +354,7 @@ export default function AboutClient({ locale }: AboutClientProps) {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" asChild>
-              <a href="mailto:gdsc.tudarmstadt@gmail.com">
+              <a href="mailto:dscdarmstadt@gmail.com">
                 <Mail className="h-4 w-4 mr-2" />
                 {t('contact.email')}
               </a>
@@ -369,7 +369,7 @@ export default function AboutClient({ locale }: AboutClientProps) {
 
           <div className="flex justify-center space-x-6">
             <a
-              href="https://github.com/adham-elaraby/dscd-website-experimental"
+              href="https://github.com/dsc-darmstadt/dscdarmstadt"
               className="text-muted-foreground hover:text-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
