@@ -336,32 +336,6 @@ export default function AboutClient({ locale }: AboutClientProps) {
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="space-y-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold mb-4">{t('contact.title')}</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('contact.description')}
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex justify-center"
-        >
-          <ContactForm />
-        </motion.div>
-      </section>
-
       {/* Contact Section */}
       <section className="bg-primary/5 -mx-4 px-4 py-16 rounded-2xl">
         <motion.div
