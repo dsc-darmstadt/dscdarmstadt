@@ -19,7 +19,6 @@ import {
   Zap,
   Globe
 } from 'lucide-react'
-import { ContactForm } from '@/components/about/ContactForm'
 import { TeamMember } from '@/lib/types'
 import { useState, useEffect } from 'react'
 import { Skeleton } from '@/components/ui/skeleton'
