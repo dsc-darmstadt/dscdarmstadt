@@ -1,7 +1,7 @@
 # Developer Student Club Darmstadt Website
 
 A modern website for DSC Darmstadt built with Next.js (App Router), TypeScript, Tailwind CSS, next-intl, and shadcn/ui. Deployed on Cloudflare Pages using next-on-pages.
-
+ 
 ## ✨ Features
 
 ### 🌍 Multi-language Support
