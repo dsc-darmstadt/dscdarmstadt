@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   Code,
@@ -32,10 +33,20 @@ function TeamMemberCard({ member, index }: { member: TeamMember; index: number }
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <Card className="h-full hover:shadow-lg transition-all duration-200">
-        <div className="aspect-square relative overflow-hidden rounded-t-lg">
-          <div className="bg-gradient-to-br from-primary/20 to-secondary/20 h-full w-full flex items-center justify-center">
-            <p className="text-muted-foreground text-sm">{member.name}</p>
-          </div>
+        <div className="aspect-square relative overflow-hidden rounded-t-lg bg-gradient-to-br from-primary/20 to-secondary/20">
+          {member.imageUrl ? (
+            <Image
+              src={member.imageUrl}
+              alt={member.name}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          ) : (
+            <div className="h-full w-full flex items-center justify-center">
+              <p className="text-muted-foreground text-sm">{member.name}</p>
+            </div>
+          )}
         </div>
         <CardHeader className="text-center">
           <CardTitle className="text-lg">{member.name}</CardTitle>
@@ -263,6 +274,23 @@ export default function AboutClient({ locale }: AboutClientProps) {
           ))}
         </div>
       </section>
+
+      {/* Team Group Photo */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl"
+      >
+        <Image
+          src="/images/team/group.jpg"
+          alt={t('team.title')}
+          fill
+          sizes="(min-width: 1280px) 1200px, 100vw"
+          className="object-cover"
+        />
+      </motion.div>
 
       {/* Leadership Team Section */}
       <section className="space-y-12">
