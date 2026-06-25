@@ -10,6 +10,7 @@ import {
   AnimatedSection,
   AnimatedCard
 } from '@/components/home/HomeAnimatedWrapper'
+import Image from 'next/image'
 import { ArrowRight, Code, Users, Lightbulb, Target } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -66,10 +67,16 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </Button>
             </AnimatedHeroButtons>
           </div>          <AnimatedHeroImage className="relative">
-            <div className="aspect-square relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/5">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Code className="h-32 w-32 text-primary/30" />
-              </div>              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+            <div className="aspect-[730/600] relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/5">
+              <Image
+                src="/images/home-group.jpg"
+                alt={t('hero.tagline')}
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-sm text-muted-foreground text-center">
                   {t('hero.tagline')}
