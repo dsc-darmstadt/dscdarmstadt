@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Calendar, Clock, MapPin } from "lucide-react"
@@ -24,6 +25,7 @@ import { formatDate, formatTime } from "@/lib/utils"
 
 function PastEventCard({ event, index }: { event: Event; index: number }) {
   const locale = useLocale()
+  const t = useTranslations("events")
 
   return (
     <motion.div
@@ -53,6 +55,12 @@ function PastEventCard({ event, index }: { event: Event; index: number }) {
               {event.location}
             </div>
           </div>
+
+          <Button asChild className="w-full">
+            <Link href={`/${locale}/events/${event.id}`}>
+              {t("learnMore")}
+            </Link>
+          </Button>
         </CardContent>
       </Card>
     </motion.div>

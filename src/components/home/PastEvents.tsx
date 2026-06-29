@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import {
   Card,
@@ -9,13 +10,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { PastEvent } from "@/lib/types"
+import { Button } from "@/components/ui/button"
+import { Event } from "@/lib/types"
 import { formatDate, formatTime } from "@/lib/utils"
 import { useLocale, useTranslations } from "next-intl"
 import { Calendar, MapPin, Clock } from "lucide-react"
 
 interface PastEventsProps {
-  events: PastEvent[]
+  events: Event[]
 }
 
 export function PastEvents({ events }: PastEventsProps) {
@@ -73,6 +75,11 @@ export function PastEvents({ events }: PastEventsProps) {
                   <span className="line-clamp-1">{event.location}</span>
                 </div>
               </div>
+              <Button asChild className="w-full">
+                <Link href={`/${locale}/events/${event.id}`}>
+                  {t("learnMore")}
+                </Link>
+              </Button>
             </CardContent>
           </Card>
         </motion.div>
