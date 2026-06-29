@@ -5,12 +5,12 @@ import { dbEventToEvent, eventToDbEvent } from '@/lib/utils/converters';
 export const runtime = 'edge';
 
 interface RouteParams {
-  params: { eventId: string };
+  params: Promise<{ eventId: string }>;
 }
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const { eventId } = params;
+    const { eventId } = await params;
 
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
-    const { eventId } = params;
+    const { eventId } = await params;
     const body = await request.json();
 
     // Convert frontend event to database format
@@ -112,7 +112,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
-    const { eventId } = params;
+    const { eventId } = await params;
 
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();

@@ -5,11 +5,11 @@ import ProjectsClient from './projects-client'
 export const runtime = 'edge';
 
 interface Props {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { locale } = params
+  const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'projects' })
 
   return generatePageMetadata({
@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: Props) {
   })
 }
 
-export default function ProjectsPage({ params }: Props) {
-  return <ProjectsClient locale={params.locale} />
+export default async function ProjectsPage({ params }: Props) {
+  const { locale } = await params
+  return <ProjectsClient locale={locale} />
 }
