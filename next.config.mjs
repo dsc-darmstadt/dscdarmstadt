@@ -15,7 +15,6 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   productionBrowserSourceMaps: false,
-  optimizeFonts: false,
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

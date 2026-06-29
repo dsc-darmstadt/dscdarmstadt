@@ -5,12 +5,12 @@ import { dbTeamMemberToTeamMember, teamMemberToDbTeamMember } from '@/lib/utils/
 export const runtime = 'edge';
 
 interface RouteParams {
-  params: { memberId: string };
+  params: Promise<{ memberId: string }>;
 }
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const { memberId } = params;
+    const { memberId } = await params;
 
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
-    const { memberId } = params;
+    const { memberId } = await params;
     const body = await request.json();
 
     // Convert frontend team member to database format
@@ -111,7 +111,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
-    const { memberId } = params;
+    const { memberId } = await params;
 
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();

@@ -5,12 +5,12 @@ import { dbProjectToProject, projectToDbProject } from '@/lib/utils/converters';
 export const runtime = 'edge';
 
 interface RouteParams {
-  params: { projectId: string };
+  params: Promise<{ projectId: string }>;
 }
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const { projectId } = params;
+    const { projectId } = await params;
 
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
-    const { projectId } = params;
+    const { projectId } = await params;
     const body = await request.json();
 
     // Convert frontend project to database format
@@ -112,7 +112,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
-    const { projectId } = params;
+    const { projectId } = await params;
 
     // Create Supabase client that works with Cloudflare env bindings
     const supabase = createSupabaseClient();

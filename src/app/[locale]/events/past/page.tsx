@@ -3,11 +3,10 @@ import PastEventsClient from '../past-events-client'
 export const runtime = 'edge';
 
 interface Props {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
-export default function PastEventsPage({ params }: Props) {
-  return <PastEventsClient locale={params.locale} />
+export default async function PastEventsPage({ params }: Props) {
+  const { locale } = await params
+  return <PastEventsClient locale={locale} />
 }
-
-
