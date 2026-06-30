@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Project } from '@/lib/types'
-import { AdminGuard } from '@/components/admin/AdminGuard'
 import { ProjectForm } from '@/components/admin/ProjectForm'
 import { DeleteConfirmDialog } from '@/components/admin/DeleteConfirmDialog'
 import { Button } from '@/components/ui/button'
@@ -143,9 +142,5 @@ function ProjectsContent() {
 }
 
 export default function ProjectsPage() {
-  return (
-    <AdminGuard>
-      <ProjectsContent />
-    </AdminGuard>
-  )
+  return <ProjectsContent />
 }

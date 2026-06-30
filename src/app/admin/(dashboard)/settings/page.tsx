@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
-import { AdminGuard } from '@/components/admin/AdminGuard'
 import { DeleteConfirmDialog } from '@/components/admin/DeleteConfirmDialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -175,9 +174,5 @@ function SettingsContent() {
 }
 
 export default function SettingsPage() {
-  return (
-    <AdminGuard>
-      <SettingsContent />
-    </AdminGuard>
-  )
+  return <SettingsContent />
 }

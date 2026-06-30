@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { TeamMember } from '@/lib/types'
-import { AdminGuard } from '@/components/admin/AdminGuard'
 import { TeamMemberForm } from '@/components/admin/TeamMemberForm'
 import { DeleteConfirmDialog } from '@/components/admin/DeleteConfirmDialog'
 import { Button } from '@/components/ui/button'
@@ -137,9 +136,5 @@ function TeamContent() {
 }
 
 export default function TeamPage() {
-  return (
-    <AdminGuard>
-      <TeamContent />
-    </AdminGuard>
-  )
+  return <TeamContent />
 }

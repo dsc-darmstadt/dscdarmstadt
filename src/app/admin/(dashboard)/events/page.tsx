@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Event } from '@/lib/types'
-import { AdminGuard } from '@/components/admin/AdminGuard'
 import { EventForm } from '@/components/admin/EventForm'
 import { DeleteConfirmDialog } from '@/components/admin/DeleteConfirmDialog'
 import { Button } from '@/components/ui/button'
@@ -140,9 +139,5 @@ function EventsContent() {
 }
 
 export default function EventsPage() {
-  return (
-    <AdminGuard>
-      <EventsContent />
-    </AdminGuard>
-  )
+  return <EventsContent />
 }

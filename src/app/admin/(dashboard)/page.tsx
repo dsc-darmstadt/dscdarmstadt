@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
-import { AdminGuard } from '@/components/admin/AdminGuard'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Calendar, FolderOpen, Users, ArrowRight } from 'lucide-react'
@@ -79,9 +78,5 @@ function DashboardContent() {
 }
 
 export default function AdminDashboard() {
-  return (
-    <AdminGuard>
-      <DashboardContent />
-    </AdminGuard>
-  )
+  return <DashboardContent />
 }
