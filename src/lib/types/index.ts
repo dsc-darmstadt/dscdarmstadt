@@ -90,6 +90,7 @@ export interface TeamMember {
     email?: string;
   };
   position: number;
+  isLeadership?: boolean;
 }
 
 // Database types (matching Supabase schema)

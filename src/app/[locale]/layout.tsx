@@ -17,12 +17,10 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale as any)) notFound();
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages({ locale });  return (
+  const messages = await getMessages({ locale });
+  return (
     <NextIntlClientProvider messages={messages} locale={locale}>
       <LocaleProvider />
       <ThemeProvider

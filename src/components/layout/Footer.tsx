@@ -72,10 +72,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t">
-          <p className="text-center text-sm text-muted-foreground">
+        <div className="mt-8 pt-8 border-t flex items-center justify-between">
+          <p className="text-sm text-muted-foreground">
             {t('copyright')}
           </p>
+          <Link href="/admin" className="text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+            Admin
+          </Link>
         </div>
       </div>
     </footer>
