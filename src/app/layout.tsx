@@ -30,6 +30,7 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        style={{ paddingBottom: '36px' }}
         suppressHydrationWarning
       >
         {children}

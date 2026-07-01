@@ -6,8 +6,14 @@ let _supabase: ReturnType<typeof createClient> | null = null
 
 function getSupabaseClient() {
   if (!_supabase) {
-    const config = getSupabaseConfig()
-    _supabase = createClient(config.url, config.anonKey)
+    // Use literal access so Next.js can statically inline these at build time.
+    // Dynamic process.env[key] access does NOT work for NEXT_PUBLIC_ vars in the browser.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    if (!url || !key) {
+      throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY')
+    }
+    _supabase = createClient(url, key)
   }
   return _supabase
 }
@@ -19,6 +25,21 @@ export const supabase = new Proxy({} as ReturnType<typeof createClient>, {
     return (client as any)[prop]
   }
 })
+
+// Use this in admin API routes — bypasses RLS using the service role key
+export function createSupabaseServiceClient() {
+  const supabaseUrl =
+    process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    throw new Error(
+      'Missing SUPABASE_SERVICE_ROLE_KEY or SUPABASE_URL environment variables.'
+    )
+  }
+
+  return createClient(supabaseUrl, serviceRoleKey)
+}
 
 // Use this function in API routes instead of importing supabase
 export function createSupabaseClient(cloudflareEnv?: CloudflareEnv) {

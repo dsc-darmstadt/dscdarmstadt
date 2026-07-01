@@ -84,7 +84,8 @@ export function dbTeamMemberToTeamMember(dbMember: DatabaseTeamMember): TeamMemb
       twitter: dbMember.twitter_url || undefined,
       email: dbMember.email || undefined,
     },
-    position: dbMember.order_index || 0
+    position: dbMember.order_index || 0,
+    isLeadership: dbMember.is_leadership,
   };
 }
 
