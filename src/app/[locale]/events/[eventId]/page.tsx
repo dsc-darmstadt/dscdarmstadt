@@ -154,28 +154,24 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Registration CTA */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>{t('joinEvent')}</CardTitle>
-                  <CardDescription>
-                    {t('registerNow')}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {event.registrationLink ? (
+              {event.registrationLink && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{t('joinEvent')}</CardTitle>
+                    <CardDescription>
+                      {t('registerNow')}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
                     <Button asChild className="w-full">
                       <Link href={event.registrationLink} target="_blank">
                         <ExternalLink className="w-4 h-4 mr-2" />
                         {t('register')}
                       </Link>
                     </Button>
-                  ) : (
-                    <Button disabled className="w-full">
-                      {t('registrationClosed')}
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              )}
 
               {/* Tags */}
               {event.tags && event.tags.length > 0 && (
