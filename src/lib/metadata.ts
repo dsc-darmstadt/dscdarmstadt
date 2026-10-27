@@ -1,11 +1,18 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+
+// Single source for absolute URLs (canonical, OG, sitemap, robots). Set NEXT_PUBLIC_BASE_URL once a custom domain exists.
+export const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dscdarmstadt.pages.dev';
+
+const siteName = 'DSC Darmstadt';
+const siteDescription = 'Join TU Darmstadt\'s developer community. Connect with industry leaders, participate in hackathons, and build the future of technology together.';
 
 interface MetadataConfig {
   title?: string;
   description?: string;
   keywords?: string[];
+  /** Route path without the locale prefix, e.g. '/events'. */
   path?: string;
+  /** Absolute URL or path under /public. */
   image?: string;
   locale?: string;
 }
@@ -15,20 +22,13 @@ export async function generateMetadata({
   description,
   keywords = [],
   path = '',
-  image = '/og-image.jpg', // TODO: add real og image 1200x630px
+  image = '/og-image.jpg',
   locale = 'en'
 }: MetadataConfig): Promise<Metadata> {
-  const t = await getTranslations({ locale });
+  const fullUrl = `${siteUrl}/${locale}${path}`;
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dscd.ae0x.tech';
-  const fullUrl = `${baseUrl}${path}`;
-
-  const defaultTitle = 'DSCD';
-  const defaultDescription = 'Join TU Darmstadt\'s developer community. Connect with industry leaders, participate in hackathons, and build the future of technology together.';
-
-  // Don't manually add the site name here - the root layout template will handle it
-  const metaTitle = title || defaultTitle;
-  const metaDescription = description || defaultDescription;
+  const metaTitle = title || siteName;
+  const metaDescription = description || siteDescription;
 
   const defaultKeywords = [
     'Developer Student Club',
@@ -46,7 +46,8 @@ export async function generateMetadata({
   const allKeywords = [...defaultKeywords, ...keywords];
 
   return {
-    title: metaTitle,
+    // Pages without a title (home) show the bare site name instead of "X | DSCD".
+    title: title || { absolute: siteName },
     description: metaDescription,
     keywords: allKeywords.join(', '),
     authors: [{ name: 'Developer Student Club Darmstadt' }],
@@ -58,14 +59,8 @@ export async function generateMetadata({
       description: metaDescription,
       url: fullUrl,
       siteName: 'Developer Student Club Darmstadt',
-      images: [
-        {
-          url: `${baseUrl}${image}`,
-          width: 1200,
-          height: 630,
-          alt: metaTitle,
-        }
-      ],
+      // Relative paths resolve against metadataBase.
+      images: [{ url: image, alt: metaTitle }],
       locale: locale,
       type: 'website',
     },
@@ -74,7 +69,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: metaTitle,
       description: metaDescription,
-      images: [`${baseUrl}${image}`],
+      images: [image],
       creator: '@dsc_darmstadt',
     },
 
@@ -97,8 +92,8 @@ export async function generateMetadata({
     alternates: {
       canonical: fullUrl,
       languages: {
-        'en': `${baseUrl}/en${path}`,
-        'de': `${baseUrl}/de${path}`,
+        'en': `${siteUrl}/en${path}`,
+        'de': `${siteUrl}/de${path}`,
       },
     },
 
@@ -112,7 +107,7 @@ export async function generateMetadata({
 }
 
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://dscd.ae0x.tech'),
+  metadataBase: new URL(siteUrl),
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
@@ -122,7 +117,7 @@ export const defaultMetadata: Metadata = {
     icon: [
       { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
       { url: '/icon0.svg', type: 'image/svg+xml' },
-      { url: '/icon1.png', type: 'image/png', sizes: '32x32' }
+      { url: '/icon1.png', type: 'image/png', sizes: '96x96' }
     ],
     apple: [
       {
@@ -156,11 +151,11 @@ export const defaultMetadata: Metadata = {
   },
   manifest: '/manifest.json',
   title: {
-    default: 'DSC Darmstadt',
+    default: siteName,
     template: '%s | DSCD'
   },
-  description: 'Join TU Darmstadt\'s developer community. Connect with industry leaders, participate in hackathons, and build the future of technology together.',
-  applicationName: 'DSC Darmstadt',
+  description: siteDescription,
+  applicationName: siteName,
   referrer: 'origin-when-cross-origin',
   formatDetection: {
     email: false,

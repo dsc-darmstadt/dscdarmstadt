@@ -13,8 +13,14 @@ import {
 import Image from 'next/image'
 import { ArrowRight, Code, Users, Lightbulb, Target } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata'
 
 export const runtime = 'edge';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return generatePageMetadata({ locale });
+}
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

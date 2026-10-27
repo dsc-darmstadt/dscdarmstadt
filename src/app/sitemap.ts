@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
+import { siteUrl as baseUrl } from '@/lib/metadata'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dscd.ae0x.tech'
   const locales = ['en', 'de']
   const routes = [
     '',
@@ -23,14 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === '' ? 1 : 0.8,
       })
     })
-  })
-
-  // Add special priority for main pages
-  sitemap.push({
-    url: `${baseUrl}/en`,
-    lastModified: new Date(),
-    changeFrequency: 'daily',
-    priority: 1,
   })
 
   return sitemap

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props) {
     title: t('title'),
     description: t('description'),
     keywords: ['Events', 'Hackathons', 'Workshops', 'Tech Events', 'Programming', 'Networking'],
-    path: `/${locale}/events`,
+    path: '/events',
     locale
   })
 }
