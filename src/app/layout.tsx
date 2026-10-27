@@ -30,24 +30,9 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
-        style={{ paddingBottom: '36px' }}
         suppressHydrationWarning
       >
         {children}
-        <div style={{
-          position: 'fixed',
-          bottom: 0,
-          width: '100%',
-          backgroundColor: '#FFF9C4', // Calm matte yellow
-          color: '#333',
-          textAlign: 'center',
-          padding: '5px 0',
-          fontSize: '0.9rem',
-          zIndex: 1000,
-          boxShadow: '0 -2px 5px rgba(0, 0, 0, 0.1)',
-        }}>
-          🚧 This website is still under construction. Thank you for your patience! 🚧
-        </div>
       </body>
     </html>
   );
