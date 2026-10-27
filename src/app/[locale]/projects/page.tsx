@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: Props) {
   return generatePageMetadata({
     title: t('title'),
     description: t('description'),
+    path: '/projects',
     locale
   })
 }

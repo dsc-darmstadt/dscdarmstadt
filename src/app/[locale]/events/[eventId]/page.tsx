@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { getEventById } from '@/lib/data/events'
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata'
 import { formatDate, formatTime, isEventUpcoming } from '@/lib/utils'
 import { Calendar, MapPin, Clock, Users, ExternalLink, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
@@ -14,6 +15,21 @@ export const runtime = 'edge';
 
 interface EventDetailPageProps {
   params: Promise<{ eventId: string; locale: string }>;
+}
+
+export async function generateMetadata({ params }: EventDetailPageProps) {
+  const { eventId, locale } = await params;
+  // Same fetch as the page below; Next dedupes it within the request.
+  const event = await getEventById(eventId)
+  if (!event) return {}
+
+  return generatePageMetadata({
+    title: event.title,
+    description: event.description,
+    path: `/events/${eventId}`,
+    image: event.imageUrl || undefined,
+    locale
+  })
 }
 
 export default async function EventDetailPage({ params }: EventDetailPageProps) {
