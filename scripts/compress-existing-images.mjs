@@ -47,7 +47,6 @@ const PRESETS = {
 const TARGETS = [
   { table: 'events', column: 'gallery_urls', isArray: true, preset: 'gallery' },
   { table: 'events', column: 'image_url', isArray: false, preset: 'cover' },
-  { table: 'projects', column: 'image_url', isArray: false, preset: 'cover' },
   { table: 'team_members', column: 'image_url', isArray: false, preset: 'avatar' },
 ]
 

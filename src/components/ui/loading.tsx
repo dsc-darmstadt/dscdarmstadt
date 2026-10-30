@@ -27,29 +27,6 @@ export function EventCardSkeleton() {
   );
 }
 
-export function ProjectCardSkeleton() {
-  return (
-    <div className="bg-card rounded-xl border p-6 space-y-4">
-      <div className="space-y-2">
-        <Skeleton className="h-6 w-40" />
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-3/4" />
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        <Skeleton className="h-6 w-16" />
-        <Skeleton className="h-6 w-20" />
-        <Skeleton className="h-6 w-14" />
-      </div>
-
-      <div className="flex gap-3">
-        <Skeleton className="h-9 w-24" />
-        <Skeleton className="h-9 w-24" />
-      </div>
-    </div>
-  );
-}
-
 export function PageLoadingSkeleton() {
   return (
     <div className="min-h-screen bg-background">

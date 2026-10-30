@@ -9,7 +9,7 @@ import { Upload, X, ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react'
 interface Props {
   urls: string[]
   onChange: (urls: string[]) => void
-  folder?: 'events' | 'projects' | 'team' | 'misc'
+  folder?: 'events' | 'team' | 'misc'
 }
 
 export function GalleryUpload({ urls, onChange, folder = 'events' }: Props) {

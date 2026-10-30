@@ -3,13 +3,12 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
-import { Calendar, FolderOpen, Users, LayoutDashboard, LogOut, Settings } from 'lucide-react'
+import { Calendar, Users, LayoutDashboard, LogOut, Settings } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
   { href: '/admin/events', label: 'Events', icon: Calendar, exact: false },
-  { href: '/admin/projects', label: 'Projects', icon: FolderOpen, exact: false },
   { href: '/admin/team', label: 'Team', icon: Users, exact: false },
   { href: '/admin/settings', label: 'Settings', icon: Settings, exact: false },
 ]

@@ -113,14 +113,11 @@ src/
    │  │  ├── events/
    │  │  │  ├── [eventId]/
    │  │  │  └── past/
-   │  │  ├── projects/
    │  │  └── page.tsx      # Home
    │  ├── api/
    │  │  ├── contact/
    │  │  ├── events/
    │  │  │  └── [eventId]/
-   │  │  ├── projects/
-   │  │  │  └── [projectId]/
    │  │  └── team/
    │  │     └── [memberId]/
    │  ├── globals.css
@@ -147,18 +144,11 @@ src/
 - Hero section with call-to-action
 - About DSC section with mission and values
 - Upcoming events preview
-- Featured projects showcase
 
 ### Events Page (`/[locale]/events`)
 - Tabs: Upcoming / Past
 - Event cards with register/learn more
 - Event detail pages
-
-### Projects Page (`/[locale]/projects`)
-- Project showcase with technology tags
-- GitHub and demo links
-- Team member information
-- Responsive grid layout
 
 ### About Page (`/[locale]/about`)
 - Mission and goals explanation
@@ -193,8 +183,6 @@ src/
 
 - `GET /api/events` — list events
 - `GET /api/events/[eventId]` — event by id
-- `GET /api/projects` — list projects
-- `GET /api/projects/[projectId]` — project by id
 - `GET /api/team` — list team members
 - `GET /api/team/[memberId]` — team member by id
 - `POST /api/contact` — submit contact message

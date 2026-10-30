@@ -19,7 +19,7 @@ export type ImagePreset = 'gallery' | 'cover' | 'avatar'
  */
 const PRESETS: Record<ImagePreset, { maxEdge: number; quality: number }> = {
   gallery: { maxEdge: 1600, quality: 0.82 }, // event carousel, up to 1200 px wide
-  cover: { maxEdge: 1000, quality: 0.82 },   // event/project cards, 384 px wide
+  cover: { maxEdge: 1000, quality: 0.82 },   // event cards, 384 px wide
   avatar: { maxEdge: 400, quality: 0.85 },   // team photos, 144 px circle
 }
 
