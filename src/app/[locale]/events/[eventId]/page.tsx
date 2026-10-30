@@ -19,7 +19,6 @@ interface EventDetailPageProps {
 
 export async function generateMetadata({ params }: EventDetailPageProps) {
   const { eventId, locale } = await params;
-  // Same fetch as the page below; Next dedupes it within the request.
   const event = await getEventById(eventId)
   if (!event) return {}
 

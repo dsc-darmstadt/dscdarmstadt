@@ -23,8 +23,6 @@ import {
 import { ContactForm } from '@/components/about/ContactForm'
 import { DiscordIcon } from '@/components/ui/discord-icon'
 import { TeamMember } from '@/lib/types'
-import { useState, useEffect } from 'react'
-import { Skeleton } from '@/components/ui/skeleton'
 
 // Shared surface treatment for every card on this page: generous radius, hairline
 // border and a soft shadow that deepens as the card lifts on hover.
@@ -134,62 +132,14 @@ function TeamMemberCard({ member, index }: { member: TeamMember; index: number }
   )
 }
 
-function TeamMemberCardSkeleton() {
-  return (
-    <Card className="h-full rounded-2xl border-border/60 shadow-sm">
-      <CardHeader className="items-center pt-8">
-        <Skeleton className="mb-5 h-32 w-32 rounded-full sm:h-36 sm:w-36" />
-        <Skeleton className="h-5 w-32" />
-        <Skeleton className="h-4 w-24" />
-      </CardHeader>
-      <CardContent className="space-y-2 pb-8">
-        <Skeleton className="h-3 w-full" />
-        <Skeleton className="mx-auto h-3 w-5/6" />
-        <Skeleton className="mx-auto h-3 w-2/3" />
-      </CardContent>
-    </Card>
-  )
-}
-
 interface AboutClientProps {
   locale: string
+  leadershipTeam: TeamMember[]
+  coreTeamMembers: TeamMember[]
 }
 
-export default function AboutClient({ locale }: AboutClientProps) {
+export default function AboutClient({ locale, leadershipTeam, coreTeamMembers }: AboutClientProps) {
   const t = useTranslations('about')
-  const [coreTeamMembers, setCoreTeamMembers] = useState<TeamMember[]>([])
-  const [leadershipTeam, setLeadershipTeam] = useState<TeamMember[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchTeamData = async () => {
-      try {
-        const [coreTeamResponse, leadershipResponse] = await Promise.all([
-          fetch('/api/team?leadership=false'),
-          fetch('/api/team?leadership=true')
-        ])
-
-        const [coreTeamResult, leadershipResult] = await Promise.all([
-          coreTeamResponse.json(),
-          leadershipResponse.json()
-        ])
-
-        if (coreTeamResult.success) {
-          setCoreTeamMembers(coreTeamResult.data)
-        }
-
-        if (leadershipResult.success) {
-          setLeadershipTeam(leadershipResult.data)
-        }
-      } catch (error) {
-        console.error('Error fetching team data:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchTeamData()
-  }, [])
 
   const goals = [
     {
@@ -362,16 +312,9 @@ export default function AboutClient({ locale }: AboutClientProps) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {loading ? (
-            // Loading skeleton for leadership team
-            Array.from({ length: 3 }).map((_, index) => (
-              <TeamMemberCardSkeleton key={index} />
-            ))
-          ) : (
-            leadershipTeam.map((member, index) => (
-              <TeamMemberCard key={member.id} member={member} index={index} />
-            ))
-          )}
+          {leadershipTeam.map((member, index) => (
+            <TeamMemberCard key={member.id} member={member} index={index} />
+          ))}
         </div>
       </section>
 
@@ -391,16 +334,9 @@ export default function AboutClient({ locale }: AboutClientProps) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {loading ? (
-            // Loading skeleton for core team
-            Array.from({ length: 5 }).map((_, index) => (
-              <TeamMemberCardSkeleton key={index} />
-            ))
-          ) : (
-            coreTeamMembers.map((member, index) => (
-              <TeamMemberCard key={member.id} member={member} index={index} />
-            ))
-          )}
+          {coreTeamMembers.map((member, index) => (
+            <TeamMemberCard key={member.id} member={member} index={index} />
+          ))}
         </div>
       </section>
 
