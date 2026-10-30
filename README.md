@@ -130,7 +130,7 @@ src/
    │  └── ui/              # shadcn/ui wrappers
    ├── i18n/               # next-intl setup
    ├── lib/
-   │  ├── data/            # Static fallback data
+   │  ├── data/            # Server-side Supabase queries
    │  ├── types/
    │  ├── utils/
    │  ├── metadata.ts      # SEO helpers

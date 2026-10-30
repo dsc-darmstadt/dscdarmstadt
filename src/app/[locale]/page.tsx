@@ -14,6 +14,7 @@ import Image from 'next/image'
 import { ArrowRight, Code, Users, Lightbulb, Target } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { generateMetadata as generatePageMetadata } from '@/lib/metadata'
+import { getEvents, splitEvents } from '@/lib/data/events'
 
 export const runtime = 'edge';
 
@@ -26,6 +27,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
 
   const t = await getTranslations({ locale, namespace: 'home' });
+
+  // A Supabase outage shouldn't take the landing page down; the event sections show their empty states.
+  const events = await getEvents().catch((error) => {
+    console.error('Error fetching events:', error);
+    return [];
+  });
+  const { upcoming, past } = splitEvents(events);
 
   const values = [
     {
@@ -124,10 +132,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* Upcoming Events Section */}
-      <UpcomingEventsSection />
+      <UpcomingEventsSection events={upcoming.slice(0, 3)} />
 
       {/* Dynamic Content (Past Events) */}
-      <DynamicHomeContent />
+      <DynamicHomeContent events={past.slice(0, 3)} />
     </div>
   )
 }

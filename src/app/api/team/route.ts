@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseClient } from '@/lib/supabase';
-import { dbTeamMemberToTeamMember } from '@/lib/utils/converters';
+import { getTeamMembers } from '@/lib/data/team';
 
 export const runtime = 'edge';
 
@@ -9,38 +8,18 @@ export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {
   try {
-    // Create Supabase client that works with Cloudflare env bindings
-    const supabase = createSupabaseClient();
-
     // Check for leadership filter
     const { searchParams } = new URL(request.url);
     const leadershipParam = searchParams.get('leadership');
 
-    let query = supabase
-      .from('team_members')
-      .select('*')
-      .order('order_index', { ascending: true, nullsFirst: false });
-
-    // Add leadership filter if requested
-    if (leadershipParam === 'true') {
-      query = query.eq('is_leadership', true);
-    } else if (leadershipParam === 'false') {
-      query = query.eq('is_leadership', false);
-    }
-
-    const { data: teamMembers, error } = await query;
-
-    if (error) {
-      console.error('Supabase error:', error);
-      throw error;
-    }
-
-    // Convert database team members to frontend format
-    const convertedTeamMembers = teamMembers.map(dbTeamMemberToTeamMember);
+    const teamMembers = await getTeamMembers();
+    const filtered = leadershipParam === 'true' || leadershipParam === 'false'
+      ? teamMembers.filter((member) => member.isLeadership === (leadershipParam === 'true'))
+      : teamMembers;
 
     return NextResponse.json({
       success: true,
-      data: convertedTeamMembers,
+      data: filtered,
       message: `${leadershipParam === 'true' ? 'Leadership team' : leadershipParam === 'false' ? 'Core team members' : 'Team members'} fetched successfully`
     });
   } catch (error) {

@@ -1,5 +1,6 @@
 import { generateMetadata as generatePageMetadata } from '@/lib/metadata'
 import { getTranslations } from 'next-intl/server'
+import { getEvents, splitEvents } from '@/lib/data/events'
 import PastEventsClient from '../past-events-client'
 
 export const runtime = 'edge';
@@ -22,5 +23,6 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function PastEventsPage({ params }: Props) {
   const { locale } = await params
-  return <PastEventsClient locale={locale} />
+  const { past } = splitEvents(await getEvents())
+  return <PastEventsClient locale={locale} events={past} />
 }
