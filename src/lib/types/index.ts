@@ -51,35 +51,6 @@ export interface PastEvent {
   organizer?: string;
 }
 
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  technologies: string[];
-  repoUrl?: string;
-  demoUrl?: string;
-  members: string[];
-  status: 'active' | 'completed' | 'archived';
-  featured: boolean;
-}
-
-// Database types (matching Supabase schema)
-export interface DatabaseProject {
-  id: string;
-  title: string;
-  description: string;
-  image_url: string;
-  github_url: string | null;
-  demo_url: string | null;
-  technologies: string[];
-  team_members: string[];
-  status: 'active' | 'completed' | 'archived';
-  is_featured: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
 export interface TeamMember {
   id: string;
   name: string;

@@ -1,4 +1,4 @@
-import { Event, Project, TeamMember, DatabaseEvent, DatabaseProject, DatabaseTeamMember } from '../types';
+import { Event, TeamMember, DatabaseEvent, DatabaseTeamMember } from '../types';
 
 // Convert database event to frontend event
 export function dbEventToEvent(dbEvent: DatabaseEvent): Event {
@@ -38,37 +38,6 @@ export function eventToDbEvent(event: Partial<Event>): Partial<DatabaseEvent> {
     requirements: event.requirements || [],
     is_featured: event.is_featured || false,
     gallery_urls: event.galleryImages || []
-  };
-}
-
-// Convert database project to frontend project
-export function dbProjectToProject(dbProject: DatabaseProject): Project {
-  return {
-    id: dbProject.id,
-    title: dbProject.title,
-    description: dbProject.description,
-    imageUrl: dbProject.image_url,
-    technologies: dbProject.technologies,
-    repoUrl: dbProject.github_url || undefined,
-    demoUrl: dbProject.demo_url || undefined,
-    members: dbProject.team_members,
-    status: dbProject.status,
-    featured: dbProject.is_featured
-  };
-}
-
-// Convert frontend project to database project
-export function projectToDbProject(project: Partial<Project>): Partial<DatabaseProject> {
-  return {
-    title: project.title,
-    description: project.description || '',
-    image_url: project.imageUrl || '',
-    technologies: project.technologies || [],
-    github_url: project.repoUrl || null,
-    demo_url: project.demoUrl || null,
-    team_members: project.members || [],
-    status: project.status || 'active',
-    is_featured: project.featured || false
   };
 }
 

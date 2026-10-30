@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Code, Github, Linkedin, Mail, Instagram } from 'lucide-react'
+import { DiscordIcon } from '@/components/ui/discord-icon'
 
 export function Footer() {
   const t = useTranslations('footer')
@@ -36,11 +37,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  {navT('projects') + '(soon!)'}
-                </Link>
-              </li>
-              <li>
                 <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {navT('about')}
                 </Link>
@@ -55,6 +51,10 @@ export function Footer() {
               <a href="mailto:dscdarmstadt@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
+              </a>
+              <a href="https://discord.gg/nmcUSsuyWp" className="text-muted-foreground hover:text-foreground transition-colors">
+                <DiscordIcon className="h-5 w-5" />
+                <span className="sr-only">Discord</span>
               </a>
               <a href="https://github.com/dsc-darmstadt/dscdarmstadt" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="h-5 w-5" />

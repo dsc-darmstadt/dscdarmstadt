@@ -21,6 +21,7 @@ import {
   Globe
 } from 'lucide-react'
 import { ContactForm } from '@/components/about/ContactForm'
+import { DiscordIcon } from '@/components/ui/discord-icon'
 import { TeamMember } from '@/lib/types'
 import { useState, useEffect } from 'react'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -435,6 +436,15 @@ export default function AboutClient({ locale }: AboutClientProps) {
           </div>
 
           <div className="flex justify-center space-x-6">
+            <a
+              href="https://discord.gg/nmcUSsuyWp"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <DiscordIcon className="h-6 w-6" />
+              <span className="sr-only">Discord</span>
+            </a>
             <a
               href="https://github.com/dsc-darmstadt/dscdarmstadt"
               className="text-muted-foreground hover:text-foreground transition-colors"

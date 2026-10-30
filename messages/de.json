@@ -2,7 +2,6 @@
   "navigation": {
     "home": "Startseite",
     "events": "Events",
-    "projects": "Projekte",
     "about": "Über uns"
   },
   "home": {
@@ -45,13 +44,6 @@
       },
       "viewAll": "Alle Events anzeigen",
       "noUpcomingEvents": "Momentan keine anstehenden Events. Bleib dran! 😊"
-    },
-    "projects": {
-      "featured": {
-        "title": "Ausgewählte Projekte",
-        "description": "Schau, woran unsere Community arbeitet! 🤩"
-      },
-      "viewAll": "Alle Projekte anzeigen"
     }
   },
   "events": {
@@ -85,14 +77,6 @@
     "gallery": "Event-Fotos",
     "type": "Typ",
     "unlimited": "Unbegrenzt"
-  },
-  "projects": {
-    "title": "Projekte",
-    "description": "Sieh dir an, woran unsere Community arbeitet.",
-    "viewCode": "Code ansehen",
-    "viewDemo": "Demo ansehen",
-    "technologies": "Technologien",
-    "team": "Team"
   },
   "about": {
     "title": "Über DSC Darmstadt",

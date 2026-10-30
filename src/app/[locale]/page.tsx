@@ -126,7 +126,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Upcoming Events Section */}
       <UpcomingEventsSection />
 
-      {/* Dynamic Content (Past Events & Featured Projects) */}
+      {/* Dynamic Content (Past Events) */}
       <DynamicHomeContent />
     </div>
   )

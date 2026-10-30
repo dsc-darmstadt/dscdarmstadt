@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     }
 
     const type = (formData.get('type') as string | null) || 'misc'
-    const allowedTypes = ['events', 'projects', 'team', 'misc']
+    const allowedTypes = ['events', 'team', 'misc']
     const folder = allowedTypes.includes(type) ? type : 'misc'
 
     const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg'

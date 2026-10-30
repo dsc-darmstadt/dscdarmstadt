@@ -1,30 +1,5 @@
 import { supabase } from '../lib/supabase.js';
 
-// Sample projects
-const sampleProjects = [
-  {
-    title: "University Food Tracker",
-    description: "A web application to track meal plans and nutritional information for university students. This project helps students manage their meal plans, track nutritional intake, and discover healthy eating options on campus. Built with React and Node.js.",
-    image_url: "/images/food-tracker.jpg",
-    github_url: "https://github.com/dscdarmstadt/food-tracker",
-    demo_url: "https://food-tracker.dscdarmstadt.de",
-    technologies: ["React", "Node.js", "MongoDB", "Express"],
-    team_members: ["Alice Smith", "Bob Johnson", "Charlie Brown"],
-    status: "active",
-    is_featured: true
-  },
-  {
-    title: "Campus Event Planner",
-    description: "A platform for organizing and discovering events happening on campus. An intuitive platform that allows students and organizations to create, manage, and discover events happening around campus. Features include event recommendations, calendar integration, and RSVP management.",
-    image_url: "/images/event-planner.jpg",
-    github_url: "https://github.com/dscdarmstadt/event-planner",
-    technologies: ["Vue.js", "Firebase", "TypeScript"],
-    team_members: ["David Wilson", "Emma Davis", "Frank Miller"],
-    status: "completed",
-    is_featured: false
-  }
-];
-
 // Sample team members
 const sampleTeamMembers = [
   {
@@ -61,23 +36,10 @@ const sampleTeamMembers = [
 ];
 
 // Events are intentionally NOT seeded here. They are created exclusively through
-// the admin panel by a signed-in admin, so this script only seeds projects and team.
+// the admin panel by a signed-in admin, so this script only seeds team.
 async function populateDatabase() {
   try {
     console.log('Starting database population...');
-
-    // Insert projects
-    console.log('Inserting projects...');
-    const { data: projects, error: projectsError } = await supabase
-      .from('projects')
-      .insert(sampleProjects)
-      .select();
-
-    if (projectsError) {
-      console.error('Error inserting projects:', projectsError);
-    } else {
-      console.log(`Inserted ${projects.length} projects`);
-    }
 
     // Insert team members
     console.log('Inserting team members...');

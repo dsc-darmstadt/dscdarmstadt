@@ -2,7 +2,6 @@
   "navigation": {
     "home": "Home",
     "events": "Events",
-    "projects": "Projects",
     "about": "About"
   },
   "home": {    "hero": {
@@ -44,13 +43,6 @@
       "viewAll": "View All Events",
       "noUpcomingEvents": "No upcoming events at the moment. Stay tuned! 😊",
       "noPastEvents": "Oh, oh, no past events to display. 🤔"
-    },
-    "projects": {
-      "featured": {
-        "title": "Featured Projects",
-        "description": "See what our community is working on! 🤩"
-      },
-      "viewAll": "View All Projects"
     }
   },
   "events": {
@@ -83,14 +75,6 @@
     "gallery": "Event Photos",
     "type": "Type",
     "unlimited": "Unlimited"
-  },
-  "projects": {
-    "title": "Projects",
-    "description": "Have a look at what our community members are working on.",
-    "viewCode": "View Code",
-    "viewDemo": "View Demo",
-    "technologies": "Technologies",
-    "team": "Team"
   },
   "about": {
     "title": "About DSC Darmstadt",

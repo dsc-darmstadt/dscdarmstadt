@@ -10,7 +10,7 @@ import { Upload, X, AlertCircle } from 'lucide-react'
 interface Props {
   currentUrl?: string
   onUpload: (url: string) => void
-  folder?: 'events' | 'projects' | 'team' | 'misc'
+  folder?: 'events' | 'team' | 'misc'
 }
 
 export function ImageUpload({ currentUrl, onUpload, folder = 'misc' }: Props) {
